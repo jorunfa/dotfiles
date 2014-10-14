@@ -120,11 +120,8 @@ alias pumpitup="osascript -e 'set volume 10'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 # My own stuff
-alias spoon='mosh spoon.orakel.ntnu.no'
-alias s='mosh spoon.orakel.ntnu.no'
-alias webf='ssh web381.webfaction.com'
+alias fac='ssh web381.webfaction.com'
 alias ntnui='ssh ntnui@login.domeneshop.no'
 alias ntnuiw='sshfs ntnui@login.domeneshop.no:/home/2/n/ntnui/www domeneshop_www/'
-alias t='sshfs spoon.orakel.ntnu.no:/home/jorunfa/torrent/ /Users/jorunfa/t/'
-alias p='sshfs spoon.orakel.ntnu.no:/home/jorunfa/projects/ /Users/jorunfa/p/'
-alias tt='/Users/jorunfa/tt.sh'
+alias p="cd ~/projects"
+alias prez="cd ~/prez"
