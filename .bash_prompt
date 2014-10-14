@@ -2,6 +2,7 @@
 # Shamelessly copied from https://github.com/gf3/dotfiles
 
 default_username='jorunfa'
+default_host='soup'
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
@@ -52,7 +53,9 @@ function git_info() {
 
 # Only show username/host if not default
 function usernamehost() {
-	if [ $USER != $default_username ]; then echo "${MAGENTA}$USER ${WHITE}at ${ORANGE}$HOSTNAME $WHITEin "; fi
+	if [ $HOSTNAME != $default_host ] ; then
+		echo "${MAGENTA}$USER ${WHITE}at ${ORANGE}$HOSTNAME ${WHITE}in ";
+	fi
 }
 
 # iTerm Tab and Title Customization and prompt customization

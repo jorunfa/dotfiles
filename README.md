@@ -1,0 +1,1 @@
+Stolen from [Paul Irish](https://github.com/paulirish/dotfiles) after inspiration from [Morten Vale Noddeland](https://github.com/mortenvn/dotfiles).
