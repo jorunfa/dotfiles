@@ -7,7 +7,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # added by Anaconda 1.6.1 installer
 export PATH="/Users/jorunfa/anaconda/bin:$PATH"
-export PATH="$PATH:/Users/jorunfa/own_projects/progark/android-sdk-macosx/platform-tools:/Users/jorunfa/own_projects/progark/android-sdk-macosx/tools"
+export PATH="$PATH:/Users/jorunfa/android-sdk-macosx/platform-tools:/Users/jorunfa/android-sdk-macosx/tools"
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
@@ -17,7 +17,7 @@ done
 unset file
 
 # init z   https://github.com/rupa/z
-. ~/own_projects/z/z.sh
+. ~/projects/z/z.sh
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
