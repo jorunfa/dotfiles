@@ -14,4 +14,6 @@ else
 fi
 unset doIt
 source ~/.bash_profile
-chmod 600 ~/.ssh/authorized_keys; chmod 700 ~/.ssh; chmod go-w $HOME
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+chmod go-w $HOME
