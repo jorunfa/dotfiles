@@ -126,5 +126,5 @@ alias ntnuiw='sshfs ntnui@login.domeneshop.no:/home/2/n/ntnui/www domeneshop_www
 alias p="cd ~/projects"
 alias prez="cd ~/prez"
 alias prezup="ssh fac 'cd ~/webapps/htdocs/prez/;git pull;'"
+alias freshit="ssh fac '~/webapps/freshmovies/fresmovies/';git pull"
 alias cl="pbcopy"
-alias ubox='ssh -p 3022 localhost'
