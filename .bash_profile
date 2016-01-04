@@ -28,3 +28,6 @@ complete -W "NSGlobalDomain" defaults
 
 # For Brew
 export PATH=/usr/local/bin:$PATH
+
+# Telenor digital scripts
+export PATH=$PATH:/Users/jorunfa/code/tdscripts
