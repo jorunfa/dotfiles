@@ -31,3 +31,6 @@ export PATH=/usr/local/bin:$PATH
 
 # Telenor digital scripts
 export PATH=$PATH:/Users/jorunfa/code/tdscripts
+
+# Android
+export ANDROID_HOME=/Users/jorunfa/code/android-sdk-macosx
