@@ -1,5 +1,5 @@
 # Getting started
-1. `git clone https://github.com/mortenvn/dotfiles.git`
+1. `git clone git@github.com:jorunfa/dotfiles.git` (or `https://github.com/mortenvn/dotfiles.git` <- cloned from, credz to him)
 2. Modify **settings.sh** to your needs
     * Change git name, and remove packages/applications you don't need
 3. Run the install script: `./install.sh`
@@ -20,17 +20,17 @@ Lots of things! The following things will happen in cronological order:
   * Install [Homebrew](https://brew.sh/)
   * Install essential brew packages (e.g. `fish`, `node`, `python` and `coreutils`)
 * **Fish**
-  * Symlink [universal dotfiles](https://github.com/mortenvn/dotfiles/tree/master/dotfiles/universal) (such as  [.gitconfig](https://github.com/mortenvn/dotfiles/blob/master/dotfiles/universal/gitconfig) and [.vimrc](https://github.com/mortenvn/dotfiles/blob/master/dotfiles/universal/vimrc))
-  * Symlink [fish specific dotfiles](https://github.com/mortenvn/dotfiles/tree/master/dotfiles/fish)
+  * Symlink [universal dotfiles](https://github.com/jorunfa/dotfiles/tree/master/dotfiles/universal) (such as  [.gitconfig](https://github.com/jorunfa/dotfiles/blob/master/dotfiles/universal/gitconfig) and [.vimrc](https://github.com/jorunfa/dotfiles/blob/master/dotfiles/universal/vimrc))
+  * Symlink [fish specific dotfiles](https://github.com/jorunfa/dotfiles/tree/master/dotfiles/fish)
   * Install [Fisherman](https://fisherman.github.io/) (fish package manager)
   * Install Fisherman packages (e.g. [pure theme](https://github.com/rafaelrinaldi/pure) and [z](https://github.com/rupa/z))
   * **[?]** Set fish as default shell
 * **[?] Bash**
-  * Symlink [bash specific dotfiles](https://github.com/mortenvn/dotfiles/tree/master/dotfiles/bash)
+  * Symlink [bash specific dotfiles](https://github.com/jorunfa/dotfiles/tree/master/dotfiles/bash)
   * Install bash specific brew dependencies
 * **Vim**
   * Install vim-plug (vim package manager)
-  * Install vim plugins (see [.vimrc](https://github.com/mortenvn/dotfiles/blob/master/dotfiles/universal/vimrc))
+  * Install vim plugins (see [.vimrc](https://github.com/jorunfa/dotfiles/blob/master/dotfiles/universal/vimrc))
 * **Git**
   * Set git name and email
 * **[?] Hyper**
@@ -41,7 +41,7 @@ Lots of things! The following things will happen in cronological order:
 * **[?] Change macOS default (about 100 tweaks in total)**
 * **[?] Install applications (such as Chrome and Dropbox)**
 
-For more information of what the **actual dotfiles** does, take a look at [source code](https://github.com/mortenvn/dotfiles/tree/master/dotfiles).
+For more information of what the **actual dotfiles** does, take a look at [source code](https://github.com/jorunfa/dotfiles/tree/master/dotfiles).
 
 
 # Better terminal colors
