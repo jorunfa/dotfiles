@@ -122,5 +122,5 @@ function server() {
 }
 
 # most used commands
-alias ll="l"
+alias l="ls -lash"
 alias g="git"

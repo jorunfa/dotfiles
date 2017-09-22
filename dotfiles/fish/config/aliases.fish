@@ -26,5 +26,5 @@ end
 alias c="pygmentize -O style=monokai -f console256 -g"
 
 # most used commands
-alias ll="l"
+alias l="ls -lash"
 alias g="git"
