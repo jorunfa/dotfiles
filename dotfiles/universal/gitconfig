@@ -5,6 +5,7 @@
 	s = status --short --branch
 	co = checkout
 	df = diff --color --color-words --abbrev
+	a = branch -a
 
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	# Log, just more space efficient and with pretty colors
