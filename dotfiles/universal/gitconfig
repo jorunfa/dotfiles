@@ -3,9 +3,10 @@
 	cm = commit -m
 	cam = commit -am
 	s = status --short --branch
-  ch = checkout
+	co = checkout
+	df = diff --color --color-words --abbrev
 
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	# Log, just more space efficient and with pretty colors
 
 	undo = reset --soft HEAD^
