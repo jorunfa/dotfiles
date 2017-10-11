@@ -4,7 +4,7 @@
 	cam = commit -am
 	s = status --short --branch
 	co = checkout
-	df = diff --color --color-words --abbrev
+	df = diff
 	a = branch -a
 
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
