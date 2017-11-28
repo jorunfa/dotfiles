@@ -15,7 +15,7 @@ NPM_PACKAGES="n ncu yarn"
 HPM_PACKAGES="hyper-snazzy hyperlinks"
 
 # BREW (OPTIONAL)
-OPTIONAL_BREW_PACKAGES="pyenv python3 wget curl ncdu rsync"
+OPTIONAL_BREW_PACKAGES="pyenv python3 wget curl ncdu rsync ack"
 
 # --------------------------------------------------------------
 # DANGER ZONE! EDIT THE FOLLOWING SETTINGS WITH CARE
