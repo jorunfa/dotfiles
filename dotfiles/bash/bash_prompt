@@ -1,6 +1,6 @@
 # This prompt inspired by gf3, sindresorhus, alrra, and mathiasbynens.
 
-default_username='mortnod'
+default_username='jorunfa'
 
 
 if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
