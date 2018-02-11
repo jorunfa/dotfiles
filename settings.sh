@@ -6,16 +6,16 @@ GIT_EMAIL="j.b.fagerjord@gmail.com"
 # The applications below are regular apps such as Chrome and Dropbox.
 # Please make sure that you remove all the programs you don't want to install on your computer
 # P.S. The installer script won't install the applications unless you tell it to. It's your call  :)
-BREW_CASKS="alfred google-chrome iterm2 postman skype slack spotify steam sublime-text vlc dropbox firefox sizeup code"
+BREW_CASKS="alfred google-chrome iterm2 postman skype slack spotify steam sublime-text vlc dropbox firefox sizeup code jitouch"
 
 # NODE
-NPM_PACKAGES="n ncu yarn"
+NPM_PACKAGES="n ncu"
 
 # HYPER (installed with hpm)
 HPM_PACKAGES="hyper-snazzy hyperlinks"
 
 # BREW (OPTIONAL)
-OPTIONAL_BREW_PACKAGES="pyenv python3 wget curl ncdu rsync ack"
+OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn"
 
 # --------------------------------------------------------------
 # DANGER ZONE! EDIT THE FOLLOWING SETTINGS WITH CARE
