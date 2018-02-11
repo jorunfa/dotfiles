@@ -23,7 +23,7 @@ OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn"
 # --------------------------------------------------------------
 
 # BREW (ESSENTIAL)
-ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python vim"
+ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim"
 
 # FISH (installed with fisherman)
 FISHERMAN_PACKAGES="rafaelrinaldi/pure z jbonjean/re-search"
