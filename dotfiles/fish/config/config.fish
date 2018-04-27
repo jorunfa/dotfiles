@@ -4,6 +4,7 @@ source ~/.config/fish/aliases.fish
 # Use a newer version of coreutils (includes cat, cp, chmod, ls, mv and so on)
 # Requires: brew install coreutils
 set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+set -gx PATH /Users/jorunfa/projects/tdscripts $PATH
 
 # Start virtualfish (to automatically activate python virtualenvs)
 eval (python -m virtualfish auto_activation)
