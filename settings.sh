@@ -6,7 +6,7 @@ GIT_EMAIL="j.b.fagerjord@gmail.com"
 # The applications below are regular apps such as Chrome and Dropbox.
 # Please make sure that you remove all the programs you don't want to install on your computer
 # P.S. The installer script won't install the applications unless you tell it to. It's your call  :)
-BREW_CASKS="alfred google-chrome iterm2 postman skype slack spotify steam sublime-text vlc dropbox firefox sizeup"
+BREW_CASKS="alfred google-chrome iterm2 postman skype slack spotify steam sublime-text vlc dropbox firefox sizeup code"
 
 # NODE
 NPM_PACKAGES="n ncu yarn"
