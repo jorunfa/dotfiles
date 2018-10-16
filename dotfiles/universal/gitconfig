@@ -75,3 +75,5 @@
 [user]
 	name = Jørund B. Fagerjord
 	email = j.b.fagerjord@gmail.com
+[log]
+	date = iso
