@@ -28,7 +28,7 @@ install_fisherman() {
 install_fisherman_packages() {
     print_info "Installing fisherman packages:"
     print_list $FISHERMAN_PACKAGES
-    /usr/local/bin/fish -c "fisher install $FISHERMAN_PACKAGES"
+    /usr/local/bin/fish -c "fisher add $FISHERMAN_PACKAGES"
     print_result $? "Install fisherman packages\n"
 }
 
