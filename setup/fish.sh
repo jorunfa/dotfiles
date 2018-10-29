@@ -35,8 +35,8 @@ install_fisherman_packages() {
 install_re_search() {
     print_info "Installing re-search (backwards search using CTRL+R or arrow keys)"
 
-    make -C ~/.config/fisherman/re-search
-    chmod +x ~/.config/fisherman/re-search/re-search
+    make -C ~/.config/fisher/github.com/jbonjean/re-search
+    chmod +x ~/.config/fisher/github.com/jbonjean/re-search/re-search
     ln -s ~/.config/fisherman/re-search/re-search /usr/local/bin/re-search
 
     print_result $? "Install re-search\n"
