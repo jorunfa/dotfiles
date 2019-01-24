@@ -10,6 +10,7 @@ end
 # Requires: brew install coreutils
 set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
 set -gx PATH /Users/jorunfa/projects/tdscripts $PATH
+set -gx PATH /Users/jorunfa/Library/Android/sdk/platform-tools $PATH
 set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
 
 # Start virtualfish (to automatically activate python virtualenvs)
