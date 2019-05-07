@@ -13,6 +13,10 @@ set -gx PATH /Users/jorunfa/projects/tdscripts $PATH
 set -gx PATH /Users/jorunfa/Library/Android/sdk/platform-tools $PATH
 set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
 
+# Prefer US English and use UTF-8 encoding
+set -gx LANG en_US
+set -gx LC_ALL en_US.UTF-8
+
 # Start virtualfish (to automatically activate python virtualenvs)
 eval (python -m virtualfish auto_activation)
 
