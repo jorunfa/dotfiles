@@ -15,7 +15,7 @@ NPM_PACKAGES="n ncu"
 HPM_PACKAGES="hyper-snazzy hyperlinks"
 
 # BREW (OPTIONAL)
-OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn"
+OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn awscli git lolcat nyancat streamlink"
 
 # --------------------------------------------------------------
 # DANGER ZONE! EDIT THE FOLLOWING SETTINGS WITH CARE
