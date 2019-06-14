@@ -3,10 +3,10 @@ GIT_NAME="Jørund B. Fagerjord"
 GIT_EMAIL="j.b.fagerjord@gmail.com"
 
 # APPLICATIONS
-# The applications below are regular apps such as Chrome and Dropbox.
+# The applications below are regular apps such as Chrome.
 # Please make sure that you remove all the programs you don't want to install on your computer
 # P.S. The installer script won't install the applications unless you tell it to. It's your call  :)
-BREW_CASKS="alfred google-chrome iterm2 postman skype slack spotify steam sublime-text vlc dropbox firefox sizeup visual-studio-code jitouch"
+BREW_CASKS="abstract chromedriver google-chrome keybase sizeup streamlink-twitch-gui visual-studio-code alfred google-chrome-canary logitech-gaming-software sketch sublime-text vlc android-studio discord google-drive-file-stream skyfonts supertuxkart zulu android-studio-preview disk-inventory-x hyper obs skype tor-browser zulu8 docker intellij-idea slack aws-vault osu spotify ubiquiti-unifi-controller balsamiq-mockups firefox postman steam videostream brave-browser-dev google-backup-and-sync keepassx steelseries-exactmouse-tool virtualbox"
 
 # NODE
 NPM_PACKAGES="n ncu"
