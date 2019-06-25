@@ -34,3 +34,6 @@ export NVM_DIR="$HOME/.nvm" . "/usr/local/opt/nvm/nvm.sh"
 
 # Start pyenv: Used to easily switch between multiple versions of Python
 status --is-interactive; and source (pyenv init -|psub)
+
+# Ruby stuff
+set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
