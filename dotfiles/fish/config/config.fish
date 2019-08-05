@@ -37,3 +37,6 @@ status --is-interactive; and source (pyenv init -|psub)
 
 # Ruby stuff
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
+
+# Rust stuff
+set -g fish_user_paths "/Users/jorunfa/.cargo/bin" $fish_user_paths
