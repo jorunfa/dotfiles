@@ -30,8 +30,6 @@ set -gx LESS_TERMCAP_ue \e'[0m'           # end underline
 set -gx LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 
-export NVM_DIR="$HOME/.nvm" . "/usr/local/opt/nvm/nvm.sh"
-
 # Start pyenv: Used to easily switch between multiple versions of Python
 status --is-interactive; and source (pyenv init -|psub)
 
