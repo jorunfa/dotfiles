@@ -29,7 +29,7 @@ hash gls >/dev/null 2>&1 || alias gls="ls"
 # Set correct colorflag, depending on whether gls is available or not
 if gls --color > /dev/null 2>&1; then colorflag="--color"; else colorflag="-G"; fi;
 
-alias ls='gls -AFh ${colorflag} --group-directories-first'
+# alias ls='gls -AFh ${colorflag} --group-directories-first'
 #              ││└─ Human readable filesizes (when using -l)
 #              │└─ Put '/' after folders, '@' after symlinks, '*' after executables
 #              └─ Include hidden (but not . or ..)
