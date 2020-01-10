@@ -137,3 +137,7 @@ unset -f folder_navigation
 unset -f history_tweaks
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+
+
+export PATH="$HOME/.cargo/bin:$PATH"
