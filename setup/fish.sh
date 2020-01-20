@@ -37,7 +37,7 @@ install_re_search() {
 
     make -C ~/.config/fisher/github.com/jbonjean/re-search
     chmod +x ~/.config/fisher/github.com/jbonjean/re-search/re-search
-    ln -s ~/.config/fisherman/re-search/re-search /usr/local/bin/re-search
+    ln -s ~/.config/fisher/github.com/jbonjean/re-search/re-search /usr/local/bin/re-search
 
     print_result $? "Install re-search\n"
 }
