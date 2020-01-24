@@ -68,7 +68,7 @@ function md() {
 # `cat` with beautiful colors
 # -----------------------------------------------------------------------------
 # Requires sudo easy_install -U Pygments
-alias c='pygmentize -O style=monokai -f console256 -g'
+alias c='bat'
 
 
 # -----------------------------------------------------------------------------

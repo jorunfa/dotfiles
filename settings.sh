@@ -23,7 +23,7 @@ OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn awscli git lol
 # --------------------------------------------------------------
 
 # BREW (ESSENTIAL)
-ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim"
+ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim bat ripgrep fd"
 
 # FISH (installed with fisherman)
 FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas/fish-kubectl-completions"
@@ -32,4 +32,4 @@ FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas
 BASH_BREW_PACKAGES="bash bash-completion z"
 
 # PYTHON
-PIP_PACKAGES="pygments virtualenv virtualfish"
+PIP_PACKAGES="virtualenv virtualfish"

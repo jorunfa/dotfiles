@@ -22,8 +22,7 @@ function sudo!!
     eval sudo $history[1]
 end
 
-# Like 'cat', but with pretty colors
-alias c="pygmentize -O style=monokai -f console256 -g"
+alias c="bat"
 
 # most used commands
 alias l="ls -lash"
