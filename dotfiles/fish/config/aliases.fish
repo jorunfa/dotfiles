@@ -24,7 +24,14 @@ end
 
 alias c="bat"
 
+
+alias ls='lsd'
+
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
 # most used commands
-alias l="ls -lash"
 alias g="git"
 alias k="kubectl"
