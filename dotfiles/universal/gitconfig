@@ -79,3 +79,5 @@
 	email = j.b.fagerjord@gmail.com
 [log]
 	date = iso
+[pull]
+	ff = only
