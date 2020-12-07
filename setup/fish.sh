@@ -28,16 +28,17 @@ install_fisherman() {
 install_fisherman_packages() {
     print_info "Installing fisherman packages:"
     print_list $FISHERMAN_PACKAGES
-    /usr/local/bin/fish -c "fisher add $FISHERMAN_PACKAGES"
+    /usr/local/bin/fish -c "fisher install $FISHERMAN_PACKAGES"
     print_result $? "Install fisherman packages\n"
 }
 
 install_re_search() {
     print_info "Installing re-search (backwards search using CTRL+R or arrow keys)"
+    gh repo clone jbonjean/re-search ~/projects/ || cd ~/projects/re-search/
 
-    make -C ~/.config/fisher/github.com/jbonjean/re-search
-    chmod +x ~/.config/fisher/github.com/jbonjean/re-search/re-search
-    ln -s ~/.config/fisher/github.com/jbonjean/re-search/re-search /usr/local/bin/re-search
+    make -C .
+    chmod +x ./re-search
+    ln -s ./re-search /usr/local/bin/re-search
 
     print_result $? "Install re-search\n"
 }
