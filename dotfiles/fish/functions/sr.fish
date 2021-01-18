@@ -12,5 +12,5 @@ function sr --description "Search and replace, e.g.: sr 'the-old' 'the-new' [dir
         set dir (pwd)
     end
 
-	sd $argv[1] $argv[2] (fd . $dir --type file)
+	sd $argv[1] $argv[2] (rg -l $argv[1] $dir)
 end
