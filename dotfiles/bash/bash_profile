@@ -137,3 +137,7 @@ unset -f folder_navigation
 unset -f history_tweaks
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/jorunfa/.sdkman"
+[[ -s "/Users/jorunfa/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jorunfa/.sdkman/bin/sdkman-init.sh"

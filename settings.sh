@@ -26,7 +26,7 @@ OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn awscli git lol
 ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim bat ripgrep fd lcd"
 
 # FISH (installed with fisherman)
-FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas/fish-kubectl-completions"
+FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas/fish-kubectl-completions reitzig/sdkman-for-fish"
 
 # BASH (installed with brew)
 BASH_BREW_PACKAGES="bash bash-completion z"
