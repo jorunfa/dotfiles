@@ -8,8 +8,8 @@ end
 
 # Use a newer version of coreutils (includes cat, cp, chmod, ls, mv and so on)
 # Requires: brew install coreutils
+set -gx PATH $HOME/bin $PATH
 set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-set -gx PATH /Users/jorunfa/projects/tdscripts $PATH
 set -gx PATH /Users/jorunfa/Library/Android/sdk/platform-tools $PATH
 set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
 
