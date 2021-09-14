@@ -65,19 +65,21 @@ complete -c bazel -n "not __bazel_seen_subcommand" -l "windows_enable_symlinks" 
 complete -c bazel -n "not __bazel_seen_subcommand" -l "nowindows_enable_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "not __bazel_seen_subcommand" -l "workspace_rc" -d "a boolean; default: \"true\""
 complete -c bazel -n "not __bazel_seen_subcommand" -l "noworkspace_rc" -d "a boolean; default: \"true\""
-complete -c bazel -n "not __bazel_seen_subcommand" -l "incompatible_enable_execution_transition" -d "a boolean; default: \"false\""
-complete -c bazel -n "not __bazel_seen_subcommand" -l "noincompatible_enable_execution_transition" -d "a boolean; default: \"false\""
 complete -c bazel -n "not __bazel_seen_subcommand" -l "host_jvm_args" -d "a string; may be used multiple times" -r
 complete -c bazel -n "not __bazel_seen_subcommand" -l "host_jvm_profile" -d "a string; default: \"\"" -r
 complete -c bazel -n "not __bazel_seen_subcommand" -l "server_javabase" -d "a string; default: \"\"" -r
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "analyze-profile" -d "Analyzes build profile data." -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -92,20 +94,16 @@ complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimen
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -124,6 +122,8 @@ complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompati
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_linkopts_to_linklibs" -d "a boolean; default: \"true\""
@@ -144,6 +144,10 @@ complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompati
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -163,6 +167,7 @@ complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noattempt
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -192,17 +197,21 @@ complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperim
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from analyze-profile" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -254,12 +263,16 @@ complete -c bazel -n "__fish_seen_subcommand_from analyze-profile"
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "aquery" -d "Analyzes the given targets and queries the action graph." -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -279,6 +292,8 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_inp
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -290,6 +305,8 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_spl
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -314,7 +331,6 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "android_sdk" -d "a
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -337,14 +353,18 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "host_grte_top" -d 
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -381,22 +401,24 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "build_test_dwp" -d
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -439,8 +461,6 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_and
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -560,20 +580,16 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_disab
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -596,6 +612,8 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_disal
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -618,6 +636,10 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_run_s
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -626,7 +648,7 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "max_computation_st
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -651,6 +673,8 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "tvos_simulator_ver
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "watchos_simulator_device" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "watchos_simulator_version" -d "a dotted version (for example '2.3' or '3.3alpha2.4'); default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "aspect_deps" -d "off, conservative or precise; default: \"conservative\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "deduplicate_depsets" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nodeduplicate_depsets" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "implicit_deps" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noimplicit_deps" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "include_artifacts" -d "a boolean; default: \"true\""
@@ -693,6 +717,8 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_objc_
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -717,11 +743,10 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "announce_rc" -d "a
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -753,19 +778,23 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_bui
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -807,10 +836,15 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "target_pattern_fil
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -957,7 +991,7 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "sandbox_fake_hostn
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from aquery" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -1002,12 +1036,16 @@ complete -c bazel -n "__fish_seen_subcommand_from aquery" -fa "(bazel query -k '
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "build" -d "Builds the specified targets." -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -1027,6 +1065,8 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_inpr
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -1038,6 +1078,8 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_spli
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -1062,7 +1104,6 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "android_sdk" -d "a 
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -1085,14 +1126,18 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "host_grte_top" -d "
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -1129,22 +1174,24 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "build_test_dwp" -d 
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -1187,8 +1234,6 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_andr
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -1308,20 +1353,16 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_disabl
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -1344,6 +1385,8 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_disall
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -1366,6 +1409,10 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_run_sh
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -1374,7 +1421,7 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "max_computation_ste
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -1412,6 +1459,8 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_objc_i
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -1436,11 +1485,10 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "announce_rc" -d "a 
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -1472,19 +1520,23 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_buil
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -1526,10 +1578,15 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "target_pattern_file
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -1676,7 +1733,7 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -l "sandbox_fake_hostna
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from build" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from build" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from build" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -1721,12 +1778,16 @@ complete -c bazel -n "__fish_seen_subcommand_from build" -fa "(bazel query -k '/
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "canonicalize-flags" -d "Canonicalizes a list of bazel options." -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -1746,6 +1807,8 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexpe
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -1757,6 +1820,8 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexpe
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -1781,7 +1846,6 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "androi
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -1804,14 +1868,18 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "host_g
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -1850,22 +1918,24 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "canoni
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nocanonicalize_policy" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "show_warnings" -d "a boolean; default: \"false\""
@@ -1910,8 +1980,6 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexpe
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -2031,20 +2099,16 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experi
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -2067,6 +2131,8 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incomp
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -2089,6 +2155,10 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incomp
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -2097,7 +2167,7 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "max_co
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -2135,6 +2205,8 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experi
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -2159,11 +2231,10 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "announ
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -2195,19 +2266,23 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexpe
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -2251,10 +2326,15 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "target
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -2401,7 +2481,7 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "sandbo
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -2446,12 +2526,16 @@ complete -c bazel -n "__fish_seen_subcommand_from canonicalize-flags"
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "clean" -d "Removes output files and optionally stops the server." -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -2471,6 +2555,8 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_inpr
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -2482,6 +2568,8 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_spli
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -2506,7 +2594,6 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "android_sdk" -d "a 
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -2529,14 +2616,18 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "host_grte_top" -d "
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -2575,16 +2666,16 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "build_test_dwp" -d 
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "expunge" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexpunge" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
@@ -2593,6 +2684,10 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nolegacy_external_r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "remove_all_convenience_symlinks" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noremove_all_convenience_symlinks" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -2635,8 +2730,6 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_andr
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -2756,20 +2849,16 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_disabl
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -2792,6 +2881,8 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_disall
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -2814,6 +2905,10 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_run_sh
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -2822,7 +2917,7 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "max_computation_ste
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -2860,6 +2955,8 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_objc_i
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -2884,11 +2981,10 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "announce_rc" -d "a 
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -2920,19 +3016,23 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_buil
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -2974,10 +3074,15 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "target_pattern_file
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -3124,7 +3229,7 @@ complete -c bazel -n "__fish_seen_subcommand_from clean" -l "sandbox_fake_hostna
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from clean" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from clean" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from clean" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -3169,12 +3274,16 @@ complete -c bazel -n "__fish_seen_subcommand_from clean"
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "coverage" -d "Generates code coverage report for specified test targets." -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -3194,6 +3303,8 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_i
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -3205,6 +3316,8 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_s
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -3229,7 +3342,6 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "android_sdk" -d 
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -3252,14 +3364,18 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "host_grte_top" -
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -3296,22 +3412,24 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "build_test_dwp" 
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -3354,8 +3472,6 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_a
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -3475,20 +3591,16 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_dis
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -3511,6 +3623,8 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_dis
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -3533,6 +3647,10 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_run
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -3541,7 +3659,7 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "max_computation_
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -3579,6 +3697,8 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_obj
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -3603,11 +3723,10 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "announce_rc" -d 
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -3639,19 +3758,23 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_b
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -3699,10 +3822,15 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "target_pattern_f
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -3849,7 +3977,7 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "sandbox_fake_hos
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from coverage" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -3894,12 +4022,16 @@ complete -c bazel -n "__fish_seen_subcommand_from coverage" -fa "(bazel query -k
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "cquery" -d "Loads, analyzes, and queries the specified targets w/ configurations." -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -3919,6 +4051,8 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_inp
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -3930,6 +4064,8 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_spl
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -3954,7 +4090,6 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "android_sdk" -d "a
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -3977,14 +4112,18 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "host_grte_top" -d 
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -4021,22 +4160,24 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "build_test_dwp" -d
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -4079,8 +4220,6 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_and
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -4200,20 +4339,16 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_disab
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -4236,6 +4371,8 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_disal
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -4258,6 +4395,10 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_run_s
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -4266,7 +4407,7 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "max_computation_st
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -4325,6 +4466,8 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_objc_
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -4349,11 +4492,10 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "announce_rc" -d "a
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -4385,19 +4527,23 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_bui
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -4408,6 +4554,8 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "max_config_changes
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "max_test_output_bytes" -d "an integer; default: \"-1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "memory_profile_stable_heap_parameters" -d "two integers, separated by a comma; default: \"1,0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "output_filter" -d "a valid Java regular expression; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "print_relative_test_log_paths" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noprint_relative_test_log_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "profile" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "progress_report_interval" -d "an integer in 0-3600 range; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "project_id" -d "a string; default: see description" -r
@@ -4417,6 +4565,8 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noslim_profile" -d
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "starlark_cpu_profile" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "test_output" -d "summary, errors, all or streamed; default: \"summary\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "test_summary" -d "short, terse, detailed, none or testcase; default: \"short\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "test_verbose_timeout_warnings" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "notest_verbose_timeout_warnings" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "tool_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "toolchain_resolution_debug" -d "a comma-separated list of regex expressions with prefix '-' specifying excluded paths; default: \"-.*\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "ui_event_filters" -d "Convert list of comma separated event kind to list of filters; may be used multiple times" -r
@@ -4424,6 +4574,8 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "verbose_explanatio
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noverbose_explanations" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "verbose_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noverbose_failures" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "verbose_test_summary" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noverbose_test_summary" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_resolved_file_instead_of_workspace" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "flag_alias" -d "a 'name=value' flag alias; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_default_to_explicit_init_py" -d "a boolean; default: \"false\""
@@ -4439,10 +4591,15 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "target_pattern_fil
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -4589,7 +4746,7 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "sandbox_fake_hostn
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from cquery" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -4634,12 +4791,16 @@ complete -c bazel -n "__fish_seen_subcommand_from cquery" -fa "(bazel query -k '
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "dump" -d "Dumps the internal state of the bazel server process." -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -4665,20 +4826,16 @@ complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_disable
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -4697,6 +4854,8 @@ complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_disallo
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_linkopts_to_linklibs" -d "a boolean; default: \"true\""
@@ -4717,6 +4876,10 @@ complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_run_she
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -4736,6 +4899,7 @@ complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noattempt_to_print_r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -4765,17 +4929,21 @@ complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_build
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from dump" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from dump" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -4827,12 +4995,16 @@ complete -c bazel -n "__fish_seen_subcommand_from dump"
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "fetch" -d "Fetches external repositories that are prerequisites to the targets." -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -4854,20 +5026,16 @@ complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_disabl
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -4888,6 +5056,8 @@ complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_disall
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -4910,6 +5080,10 @@ complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_run_sh
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -4929,6 +5103,7 @@ complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noattempt_to_print_
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -4958,18 +5133,22 @@ complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_buil
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -4986,10 +5165,15 @@ complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_resolv
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from fetch" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -5059,12 +5243,16 @@ complete -c bazel -n "__fish_seen_subcommand_from fetch" -fa "(bazel query -k '/
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "help" -d "Prints help for commands, or the index." -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -5079,20 +5267,16 @@ complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_disable
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -5111,6 +5295,8 @@ complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_disallo
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_linkopts_to_linklibs" -d "a boolean; default: \"true\""
@@ -5131,6 +5317,10 @@ complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_run_she
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -5150,6 +5340,7 @@ complete -c bazel -n "__fish_seen_subcommand_from help" -l "noattempt_to_print_r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -5179,17 +5370,21 @@ complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_build
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from help" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "help_verbosity" -d "long, medium or short; default: \"medium\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from help" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
@@ -5242,12 +5437,16 @@ complete -c bazel -n "__fish_seen_subcommand_from help" -fa "startup_options tar
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "info" -d "Displays runtime info about the bazel server." -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -5267,6 +5466,8 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_inpro
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -5278,6 +5479,8 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_split
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -5302,7 +5505,6 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "android_sdk" -d "a b
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -5325,14 +5527,18 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "host_grte_top" -d "a
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -5369,22 +5575,24 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "build_test_dwp" -d "
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -5427,8 +5635,6 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_andro
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -5548,20 +5754,16 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_disable
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -5584,6 +5786,8 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_disallo
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -5606,6 +5810,10 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_run_she
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -5614,7 +5822,7 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "max_computation_step
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -5652,6 +5860,8 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_objc_in
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -5676,11 +5886,10 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "announce_rc" -d "a b
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -5712,19 +5921,23 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_build
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -5768,10 +5981,15 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "target_pattern_file"
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -5918,7 +6136,7 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -l "sandbox_fake_hostnam
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from info" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from info" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from info" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -5963,12 +6181,16 @@ complete -c bazel -n "__fish_seen_subcommand_from info" -fa "workspace install_b
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "license" -d "Prints the license of this software." -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -5983,20 +6205,16 @@ complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_disa
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -6015,6 +6233,8 @@ complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_disa
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_linkopts_to_linklibs" -d "a boolean; default: \"true\""
@@ -6035,6 +6255,10 @@ complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_run_
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -6054,6 +6278,7 @@ complete -c bazel -n "__fish_seen_subcommand_from license" -l "noattempt_to_prin
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -6083,17 +6308,21 @@ complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_bu
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from license" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from license" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -6145,12 +6374,16 @@ complete -c bazel -n "__fish_seen_subcommand_from license"
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "mobile-install" -d "Installs targets to mobile devices." -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -6170,6 +6403,8 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperime
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -6181,6 +6416,8 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperime
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -6207,7 +6444,6 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "android_sd
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -6230,14 +6466,18 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "host_grte_
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -6274,16 +6514,16 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "build_test
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incremental" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincremental" -d "a boolean; default: \"false\""
@@ -6292,6 +6532,8 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nolegacy_e
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "split_apks" -d "a boolean; default: \"false\""
@@ -6338,8 +6580,6 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperime
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -6460,20 +6700,16 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experiment
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -6496,6 +6732,8 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatib
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -6518,6 +6756,10 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatib
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -6526,7 +6768,7 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "max_comput
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -6564,6 +6806,8 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experiment
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -6588,11 +6832,10 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "announce_r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -6624,19 +6867,23 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperime
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incremental_install_verbosity" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
@@ -6679,10 +6926,15 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "target_pat
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -6829,7 +7081,7 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "sandbox_fa
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -6874,12 +7126,16 @@ complete -c bazel -n "__fish_seen_subcommand_from mobile-install" -fa "(bazel qu
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "print_action" -d "Prints the command line args for compiling a file." -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -6899,6 +7155,8 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperiment
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -6910,6 +7168,8 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperiment
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -6934,7 +7194,6 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "android_sdk"
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -6957,14 +7216,18 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "host_grte_to
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -7001,22 +7264,24 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "build_test_d
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -7059,8 +7324,6 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperiment
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -7180,20 +7443,16 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -7216,6 +7475,8 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -7238,6 +7499,10 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -7246,7 +7511,7 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "max_computat
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -7284,6 +7549,8 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -7308,11 +7575,10 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "announce_rc"
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -7344,19 +7610,23 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperiment
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -7398,10 +7668,15 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "target_patte
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -7549,7 +7824,7 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "sandbox_fake
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from print_action" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -7594,12 +7869,16 @@ complete -c bazel -n "__fish_seen_subcommand_from print_action" -fa "(bazel quer
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "query" -d "Executes a dependency graph query." -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -7621,20 +7900,16 @@ complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_disabl
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -7655,6 +7930,8 @@ complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_disall
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -7677,6 +7954,10 @@ complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_run_sh
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -7722,6 +8003,7 @@ complete -c bazel -n "__fish_seen_subcommand_from query" -l "noattempt_to_print_
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -7751,18 +8033,22 @@ complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_buil
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -7779,10 +8065,15 @@ complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_resolv
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from query" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -7852,12 +8143,16 @@ complete -c bazel -n "__fish_seen_subcommand_from query" -fa "(bazel query -k '/
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "run" -d "Runs the specified target." -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -7877,6 +8172,8 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_inproc
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -7888,6 +8185,8 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_split_
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -7912,7 +8211,6 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "android_sdk" -d "a bu
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -7935,14 +8233,18 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "host_grte_top" -d "a 
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -7979,22 +8281,24 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "build_test_dwp" -d "a
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -8037,8 +8341,6 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_androi
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -8159,20 +8461,16 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_disable_
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -8195,6 +8493,8 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_disallow
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -8217,6 +8517,10 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_run_shel
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -8225,7 +8529,7 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "max_computation_steps
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -8263,6 +8567,8 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_objc_inc
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -8287,11 +8593,10 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "announce_rc" -d "a bo
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -8323,19 +8628,23 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_build_
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -8377,10 +8686,15 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "target_pattern_file" 
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -8527,7 +8841,7 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -l "sandbox_fake_hostname
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from run" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from run" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from run" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -8572,12 +8886,16 @@ complete -c bazel -n "__fish_seen_subcommand_from run" -fa "(bazel query -k 'kin
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "shutdown" -d "Stops the bazel server." -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -8593,20 +8911,16 @@ complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_dis
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -8625,6 +8939,8 @@ complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_dis
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_linkopts_to_linklibs" -d "a boolean; default: \"true\""
@@ -8645,6 +8961,10 @@ complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_run
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -8664,6 +8984,7 @@ complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noattempt_to_pri
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -8693,17 +9014,21 @@ complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_b
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from shutdown" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -8755,12 +9080,16 @@ complete -c bazel -n "__fish_seen_subcommand_from shutdown"
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "test" -d "Builds and runs the specified test targets." -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "check_up_to_date" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nocheck_up_to_date" -d "a boolean; default: \"false\""
@@ -8780,6 +9109,8 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_inpro
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_remotable_source_manifests" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_remotable_source_manifests" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_reuse_sandbox_directories" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_sandbox_async_tree_delete_idle_threads" -d "an integer, or a keyword (\"auto\", \"HOST_CPUS\", \"HOST_RAM\"), optionally followed by an operation ([-|*]<float>) eg. \"auto\", \"HOST_CPUS*.5\"; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_sandboxfs_map_symlink_targets" -d "a boolean; default: \"false\""
@@ -8791,6 +9122,8 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_split
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_strict_fileset_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_use_hermetic_linux_sandbox" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_use_sandboxfs" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_use_windows_sandbox" -d "a tri-state (auto, yes, no); default: \"false\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_windows_sandbox_path" -d "a string; default: \"BazelSandbox.exe\"" -r
@@ -8815,7 +9148,6 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "android_sdk" -d "a b
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "apple_compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "apple_crosstool_top" -d "a build target label; default: \"@bazel_tools//tools/cpp:toolchain\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "apple_grte_top" -d "a build target label; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "apple_sdk" -d "a build target label; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "cc_output_directory_tag" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "compiler" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "coverage_report_generator" -d "a build target label; default: \"@bazel_tools//tools/test:coverage_report_generator\"" -r
@@ -8838,14 +9170,18 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "host_grte_top" -d "a
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "host_platform" -d "a build target label; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_disable_expand_if_all_available_in_flag_set" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_disable_runtimes_filegroups" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_dont_emit_static_libgcc" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_dont_enable_host_nonhost_crosstool_features" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_enable_android_toolchain_resolution" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_linkopts_in_user_link_flags" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_make_thinlto_command_lines_standalone" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_prohibit_aapt1" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_remove_cpu_and_compiler_attributes_from_cc_toolchain" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_remove_legacy_whole_archive" -d "a boolean; default: \"true\""
@@ -8882,22 +9218,24 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "build_test_dwp" -d "
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nobuild_test_dwp" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "cc_proto_library_header_suffixes" -d "comma-separated list of options; default: \".pb.h\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "cc_proto_library_source_suffixes" -d "comma-separated list of options; default: \".pb.cc\"" -r
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "enable_apple_binary_native_protos" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "noenable_apple_binary_native_protos" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_proto_descriptor_sets_include_source_info" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_proto_extra_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_proto_extra_actions" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_run_validations" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_run_validations" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_run_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_save_feature_state" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_save_feature_state" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_use_validation_aspect" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_use_validation_aspect" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "fission" -d "a set of compilation modes; default: \"no\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "legacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nolegacy_external_runfiles" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "objc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noobjc_generate_linkmap" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "output_groups" -d "comma-separated list of options; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "run_validations" -d "a boolean; default: \"true\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "norun_validations" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "save_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nosave_temps" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "action_env" -d "a 'name=value' assignment with an optional value part; may be used multiple times" -r
@@ -8940,8 +9278,6 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_andro
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_convenience_symlinks" -d "normal, clean, ignore or log_only; default: \"normal\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_convenience_symlinks_bep_event" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_forward_instrumented_files_info_by_default" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_multi_cpu" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_objc_fastbuild_options" -d "comma-separated list of options; default: \"-O0,-DDEBUG=1\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_omitfp" -d "a boolean; default: \"false\""
@@ -9061,20 +9397,16 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_disable
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -9097,6 +9429,8 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_disallo
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_disallow_legacy_py_provider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_enforce_config_setting_visibility" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
@@ -9119,6 +9453,10 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_run_she
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -9127,7 +9465,7 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "max_computation_step
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nested_set_depth_limit" -d "an integer; default: \"3500\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "allow_analysis_failures" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noallow_analysis_failures" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "analysis_testing_deps_limit" -d "an integer; default: \"600\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "analysis_testing_deps_limit" -d "an integer; default: \"800\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "break_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nobreak_build_on_parallel_dex2oat_failure" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "check_tests_up_to_date" -d "a boolean; default: \"false\""
@@ -9165,6 +9503,8 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_objc_in
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_objc_include_scanning" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_parse_headers_skipped_if_corresponding_srcs_found" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_retain_test_configuration_across_testonly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_starlark_cc_import" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_do_not_split_linking_cmdline" -d "a boolean; default: \"true\""
@@ -9189,11 +9529,10 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "announce_rc" -d "a b
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noannounce_rc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "attempt_to_print_relative_paths" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noattempt_to_print_relative_paths" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "bep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "nobep_publish_used_heap_size_post_build" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -9225,19 +9564,23 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_build
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_materialize_param_files_directly" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_repository_resolved_file" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "explain" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
@@ -9285,10 +9628,15 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "target_pattern_file"
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_downloader_config" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_guard_against_concurrent_changes" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_remote_cache_async" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_remote_capture_corrupted_outputs" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_remote_downloader" -d "a string; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noexperimental_remote_execution_keepalive" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "experimental_remote_grpc_log" -d "a path; default: see description" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_remote_output_paths_relative_to_input_root" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "incompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "noincompatible_remote_results_ignore_disk" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "remote_accept_cached" -d "a boolean; default: \"true\""
@@ -9435,7 +9783,7 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -l "sandbox_fake_hostnam
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nosandbox_fake_hostname" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "sandbox_fake_username" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "nosandbox_fake_username" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from test" -l "sandbox_tmpfs_path" -d "a string; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from test" -l "sandbox_tmpfs_path" -d "an absolute path; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "sandbox_writable_path" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "shell_executable" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from test" -l "show_loading_progress" -d "a boolean; default: \"true\""
@@ -9480,12 +9828,16 @@ complete -c bazel -n "__fish_seen_subcommand_from test" -fa "(bazel query -k 'te
 
 complete -c bazel -n "not __bazel_seen_subcommand" -xa "version" -d "Prints version information for bazel." -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "distdir" -d "a path; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_enable_bzlmod" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_enable_bzlmod" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_repository_cache_hardlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_repository_disable_download" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_repository_disable_download" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_repository_downloader_retries" -d "an integer; default: \"0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_scale_timeouts" -d "a double; default: \"1.0\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "http_timeout_scaling" -d "a double; default: \"1.0\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "registry" -d "a string; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "repository_cache" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_oom_more_eagerly_threshold" -d "an integer; default: \"100\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_ui_max_stdouterr_bytes" -d "an integer in (-1)-1073741819 range; default: \"1048576\"" -r
@@ -9502,20 +9854,16 @@ complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_disa
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_disable_external_package" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_enable_android_migration_apis" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_enable_javacclinkparamsprovider" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_google_legacy_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_google_legacy_api" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_javawrapcc_api" -d "a boolean; default: \"true\""
-complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_javawrapcc_api" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_ninja_actions" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_platforms_api" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_repo_remote_exec" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_repo_remote_exec" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_shadowed_action" -d "a boolean; default: \"false\""
-complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_shadowed_action" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_required_aspects" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_required_aspects" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_sibling_repository_layout" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_always_check_depset_elements" -d "a boolean; default: \"true\""
@@ -9534,6 +9882,8 @@ complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_disa
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_disallow_legacy_javainfo" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_disallow_struct_provider_syntax" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_enable_exports_provider" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_enable_exports_provider" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_java_common_parameters" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_linkopts_to_linklibs" -d "a boolean; default: \"true\""
@@ -9554,6 +9904,10 @@ complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_run_
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_run_shell_command_string" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_struct_has_no_methods" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_top_level_aspects_dependency" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_top_level_aspects_require_providers" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noincompatible_use_cc_configure_from_rules_cc" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "incompatible_visibility_private_attributes_at_definition" -d "a boolean; default: \"false\""
@@ -9573,6 +9927,7 @@ complete -c bazel -n "__fish_seen_subcommand_from version" -l "noattempt_to_prin
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "bes_backend" -d "a string; default: \"\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "bes_best_effort" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "nobes_best_effort" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "bes_header" -d "a 'name=value' assignment; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "bes_keywords" -d "comma-separated list of options; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "bes_lifecycle_events" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "nobes_lifecycle_events" -d "a boolean; default: \"true\""
@@ -9602,17 +9957,21 @@ complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_bu
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_build_event_fully_resolve_fileset_symlinks" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_build_event_upload_strategy" -d "a string; default: see description" -r
-complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal or unknown; may be used multiple times" -r
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_profile_additional_tasks" -d "phase, action, action_check, action_lock, action_release, action_update, action_complete, info, create_package, remote_execution, local_execution, scanner, local_parse, upload_time, process_time, remote_queue, remote_setup, fetch, vfs_stat, vfs_dir, vfs_readlink, vfs_md5, vfs_xattr, vfs_delete, vfs_open, vfs_read, vfs_write, vfs_glob, vfs_vmfs_stat, vfs_vmfs_dir, vfs_vmfs_read, wait, thread_name, thread_sort_index, skyframe_eval, skyfunction, critical_path, critical_path_component, handle_gc_notification, action_counts, local_cpu_usage, local_memory_usage, starlark_parser, starlark_user_fn, starlark_builtin_fn, starlark_user_compiled_fn, starlark_repository_fn, action_fs_staging, remote_cache_check, remote_download, remote_network, filesystem_traversal, worker_execution, worker_setup, worker_borrow, worker_working, worker_copying_outputs or unknown; may be used multiple times" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_profile_cpu_usage" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_profile_include_primary_output" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_profile_include_target_label" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_profile_include_target_label" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_record_metrics_for_all_mnemonics" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "noexperimental_stream_log_file_uploads" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "experimental_workspace_rules_log_file" -d "a path; default: see description" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "generate_json_trace_profile" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "heap_dump_on_oom" -d "a boolean; default: \"false\""
+complete -c bazel -n "__fish_seen_subcommand_from version" -l "noheap_dump_on_oom" -d "a boolean; default: \"false\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "json_trace_compression" -d "a tri-state (auto, yes, no); default: \"auto\"" -r
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "legacy_important_outputs" -d "a boolean; default: \"true\""
 complete -c bazel -n "__fish_seen_subcommand_from version" -l "nolegacy_important_outputs" -d "a boolean; default: \"true\""
