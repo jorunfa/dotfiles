@@ -35,3 +35,4 @@ alias lt='ls --tree'
 # most used commands
 alias g="git"
 alias k="kubectl"
+alias kx="kubectx"
