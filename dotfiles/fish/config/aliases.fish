@@ -36,3 +36,4 @@ alias lt='ls --tree'
 alias g="git"
 alias k="kubectl"
 alias kx="kubectx"
+alias b="bazel"
