@@ -35,3 +35,8 @@ set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 
 # Rust stuff
 set -g fish_user_paths "/Users/jorunfa/.cargo/bin" $fish_user_paths
+
+# pnpm
+set -gx PNPM_HOME "/Users/jorunfa/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
