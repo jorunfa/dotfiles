@@ -36,6 +36,10 @@ set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 # Rust stuff
 set -g fish_user_paths "/Users/jorunfa/.cargo/bin" $fish_user_paths
 
+# Volta
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+
 # pnpm
 set -gx PNPM_HOME "/Users/jorunfa/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
