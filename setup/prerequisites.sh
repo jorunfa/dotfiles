@@ -58,7 +58,7 @@ install_optional_brew_packages() {
 install_python_packages() {
     print_info "Installing python packages:"
     print_list $@
-    pip2 install "$@"
+    pip3 install "$@"
     print_result $? "Install python packages\n"
 }
 
