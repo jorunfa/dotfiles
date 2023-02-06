@@ -10,7 +10,6 @@ end
 # Requires: brew install coreutils
 set -gx PATH $HOME/bin $PATH
 set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-set -gx PATH /Users/jorunfa/Library/Android/sdk/platform-tools $PATH
 set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
 
 # Prefer US English and use UTF-8 encoding
@@ -43,4 +42,3 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 # pnpm
 set -gx PNPM_HOME "/Users/jorunfa/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
-# pnpm end
