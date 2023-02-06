@@ -15,8 +15,8 @@ create_symlinks() {
 
 add_fish_as_allowed_shell() {
     # Add fish to /etc/shells (the list of allowed shells)
-    # If "/usr/local/bin/fish" isn't already in "/etc/shells", add it to the list"
-    grep -q -F '/usr/local/bin/fish' '/etc/shells' || echo '/usr/local/bin/fish' | sudo tee -a '/etc/shells'
+    # If "/opt/homebrew/bin/fish" isn't already in "/etc/shells", add it to the list"
+    grep -q -F '/opt/homebrew/bin/fish' '/etc/shells' || echo '/opt/homebrew/bin/fish' | sudo tee -a '/etc/shells'
 }
 
 install_fisherman() {
@@ -28,7 +28,7 @@ install_fisherman() {
 install_fisherman_packages() {
     print_info "Installing fisherman packages:"
     print_list $FISHERMAN_PACKAGES
-    /usr/local/bin/fish -c "fisher install $FISHERMAN_PACKAGES"
+    /opt/homebrew/bin/fish -c "fisher install $FISHERMAN_PACKAGES"
     print_result $? "Install fisherman packages\n"
 }
 
@@ -46,7 +46,7 @@ install_re_search() {
 set_fish_as_default_shell() {
     if ask_question "Do you want to set Fish as your default shell?"; then
         # Set fish as default shell
-        chsh -s /usr/local/bin/fish
+        chsh -s /opt/homebrew/bin/fish
         print_result $? "Set Fish as default shell\n"
     else
         print_error "Alright. When the installer is finished, you can type 'fish' in the terminal to test it without setting it as your default"
