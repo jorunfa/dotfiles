@@ -26,7 +26,7 @@ OPTIONAL_BREW_PACKAGES="wget gpg curl rsync ack awscli git lolcat nyancat"
 # --------------------------------------------------------------
 
 # BREW (ESSENTIAL)
-ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim bat ripgrep fd lcd sd"
+ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim bat ripgrep fd lcd sd gh"
 
 # FISH (installed with fisherman)
 FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas/fish-kubectl-completions reitzig/sdkman-for-fish"
