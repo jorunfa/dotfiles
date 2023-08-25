@@ -48,3 +48,4 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # idea
 set -gx PATH '/Applications/IntelliJ IDEA.app/Contents/MacOS' $PATH
+rtx activate fish | source
