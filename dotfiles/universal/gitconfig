@@ -81,3 +81,5 @@
 	date = iso
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
