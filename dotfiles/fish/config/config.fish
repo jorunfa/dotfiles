@@ -48,7 +48,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # idea
 set -gx PATH '/Applications/IntelliJ IDEA.app/Contents/MacOS' $PATH
-rtx activate fish | source
+mise activate fish | source
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
