@@ -27,9 +27,12 @@
 	stash-all = stash save --include-untracked
 	# Stash untracked files as well (files that's not been added with 'git add' yet)
 
+	wip = "!git add -A && git rm $(git ls-files --deleted) 2> /dev/null ; git commit --no-verify --no-gpg-sign --message \"--wip-- [skip ci]\""
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
+	autocrlf = false
 	# attributesfile = ~/.gitattributes
 
 [credential]
