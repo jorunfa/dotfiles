@@ -1,1 +1,5 @@
-build --disk_cache=~/.cache/bazel/
+startup --output_base=~/tmp/bazel/
+build --disk_cache=~/tmp/bazelcache/
+build --action_env=PATH=.:/opt/homebrew/bin:/usr/local/bin:/bin:/usr/bin
+build --repository_cache=~/tmp/bazelrepos/
+fetch --repository_cache=~/tmp/bazelrepos/

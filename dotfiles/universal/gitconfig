@@ -29,6 +29,17 @@
 
 	wip = "!git add -A && git rm $(git ls-files --deleted) 2> /dev/null ; git commit --no-verify --no-gpg-sign --message \"--wip-- [skip ci]\""
 
+	f = "!git co -b $(openssl rand -hex 3) && \
+			git add $(git rev-parse --show-toplevel) && \
+			git commit -m \"$1\" && \
+			shift && \
+			git push -u origin && \
+			gh pr create --fill-first --web --label team-mobility-products"
+
+	w = "!git branch --sort=-committerdate | fzf --preview 'git show --color=always {-1}' \
+			--bind 'enter:become(git checkout {-1})' \
+			--height 40% --layout reverse"
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
@@ -37,6 +48,8 @@
 
 [credential]
 	helper = osxkeychain
+	credentialStore = dpapi
+	helper = /usr/local/share/gcm-core/git-credential-manager
 
 # Push easily. http://stackoverflow.com/a/23918418/89484
 [push]
@@ -86,3 +99,7 @@
 	ff = only
 [init]
 	defaultBranch = main
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[credential "https://api.github.com"]
+	provider = github
