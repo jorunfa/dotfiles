@@ -37,7 +37,7 @@
 			gh pr create --fill-first --web --label team-mobility-products"
 
 	w = "!git branch --sort=-committerdate | fzf --preview 'git show --color=always {-1}' \
-			--bind 'enter:become(git checkout {-1})' \
+			--bind 'enter:become(git switch {-1})' \
 			--height 40% --layout reverse"
 
 [core]
