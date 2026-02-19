@@ -48,7 +48,6 @@
 
 [credential]
 	helper = osxkeychain
-	credentialStore = dpapi
 	helper = /usr/local/share/gcm-core/git-credential-manager
 
 # Push easily. http://stackoverflow.com/a/23918418/89484
