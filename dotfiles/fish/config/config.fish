@@ -51,6 +51,7 @@ set -gx PATH '/Applications/IntelliJ IDEA.app/Contents/MacOS' $PATH
 
 # mise
 mise activate fish | source
+set -gx CATALINA_HOME (mise where tomcat 2>/dev/null)
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"

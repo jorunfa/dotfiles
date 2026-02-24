@@ -29,7 +29,7 @@ OPTIONAL_BREW_PACKAGES="wget gpg curl rsync ack awscli git lolcat nyancat"
 ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim bat ripgrep fd lsd sd gh dust duf dnsmasq duf"
 
 # FISH (installed with fisherman)
-FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas/fish-kubectl-completions reitzig/sdkman-for-fish"
+FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas/fish-kubectl-completions"
 # no longer used: FISHERMAN_PACKAGES="jbonjean/re-search"
 
 # BASH (installed with brew)
