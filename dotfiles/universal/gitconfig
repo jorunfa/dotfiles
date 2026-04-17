@@ -40,6 +40,23 @@
 			--bind 'enter:become(git switch {-1})' \
 			--height 40% --layout reverse"
 
+	wt = worktree
+
+	wta = "!f() { \
+		dir=\"$(git rev-parse --show-toplevel)/../$(basename $(git rev-parse --show-toplevel))-$1\"; \
+		git worktree add -b \"$1\" \"$dir\" && \
+		cd \"$dir\" && exec $SHELL; \
+	}; f"
+
+	wtr = "!f() { \
+		wt_dir=\"$(git rev-parse --show-toplevel)\"; \
+		main_dir=\"$(git worktree list --porcelain | head -1 | sed 's/worktree //')\"; \
+		cd \"$main_dir\" && \
+		git worktree remove \"$wt_dir\" && \
+		unset GIT_DIR && \
+		exec $SHELL; \
+	}; f"
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
