@@ -49,16 +49,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # idea
 set -gx PATH '/Applications/IntelliJ IDEA.app/Contents/MacOS' $PATH
 
-# mise
-mise activate fish | source
-set -gx CATALINA_HOME (mise where tomcat 2>/dev/null)/(ls (mise where tomcat 2>/dev/null) 2>/dev/null)[1]
-
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
-
-# newer bash
-set -gx PATH /opt/homebrew/bin/bash $PATH
 
 # go install path
 set --export GOPATH "$HOME/go"
@@ -66,6 +59,10 @@ set --export PATH "$GOPATH/bin" $PATH
 
 # Created by `pipx` on 2025-02-18 19:40:30
 set PATH $PATH /Users/jorunfa/.local/bin
+
+# mise (must run last so its tool paths win over brew/bun/etc.)
+mise activate fish | source
+set -gx CATALINA_HOME (mise where tomcat 2>/dev/null)/(ls (mise where tomcat 2>/dev/null) 2>/dev/null)[1]
 source (/opt/homebrew/bin/starship init fish --print-full-init | psub)
 
 # fzf
