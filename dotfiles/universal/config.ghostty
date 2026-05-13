@@ -3,3 +3,4 @@ theme = snazzy
 font-family = "JetBrains Mono"
 font-size = 14
 macos-option-as-alt = true
+scrollback-limit = 100000000
