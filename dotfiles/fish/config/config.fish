@@ -8,9 +8,9 @@ end
 
 # Use a newer version of coreutils (includes cat, cp, chmod, ls, mv and so on)
 # Requires: brew install coreutils
-set -gx PATH $HOME/bin $PATH
-set -gx PATH /opt/homebrew/opt/coreutils/libexec/gnubin $PATH
-set -g fish_user_paths "/opt/homebrew/opt/curl/bin" $fish_user_paths
+fish_add_path -gP $HOME/bin
+fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin
+fish_add_path -gP /opt/homebrew/opt/curl/bin
 
 # Prefer US English and use UTF-8 encoding
 set -gx LANG en_US
@@ -30,33 +30,35 @@ set -gx LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 
 # Ruby stuff
-set -g fish_user_paths "/opt/homebrew/opt/ruby/bin" $fish_user_paths
+fish_add_path -gP /opt/homebrew/opt/ruby/bin
 
 # Rust stuff
-set -g fish_user_paths "/Users/jorunfa/.cargo/bin" $fish_user_paths
+fish_add_path -gP $HOME/.cargo/bin
 
 # pnpm
-set -gx PNPM_HOME "/Users/jorunfa/Library/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+fish_add_path -gP $PNPM_HOME
 
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # idea
-set -gx PATH '/Applications/IntelliJ IDEA.app/Contents/MacOS' $PATH
+fish_add_path -gP '/Applications/IntelliJ IDEA.app/Contents/MacOS'
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+set -gx BUN_INSTALL "$HOME/.bun"
+fish_add_path -gP $BUN_INSTALL/bin
 
 # go install path
-set --export GOPATH "$HOME/go"
-set --export PATH "$GOPATH/bin" $PATH
+set -gx GOPATH "$HOME/go"
+fish_add_path -gP $GOPATH/bin
 
 # Created by `pipx` on 2025-02-18 19:40:30
-set PATH $PATH /Users/jorunfa/.local/bin
+fish_add_path -gPa $HOME/.local/bin
 
-# mise (must run last so its tool paths win over brew/bun/etc.)
+# mise (must run last so its tool paths win over brew/bun/etc.).
+# The Homebrew mise package's vendor conf.d snippet that would auto-activate
+# mise too early is suppressed via dotfiles/fish/conf.d/mise-activate.fish.
 mise activate fish | source
 set -gx CATALINA_HOME (mise where tomcat 2>/dev/null)/(ls (mise where tomcat 2>/dev/null) 2>/dev/null)[1]
 source (/opt/homebrew/bin/starship init fish --print-full-init | psub)
