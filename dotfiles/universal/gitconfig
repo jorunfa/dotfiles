@@ -36,9 +36,18 @@
 			git push -u origin && \
 			gh pr create --fill-first --web --label team-mobility-products"
 
-	w = "!git branch --sort=-committerdate | fzf --preview 'git show --color=always {-1}' \
-			--bind 'enter:become(git switch {-1})' \
-			--height 40% --layout reverse"
+	w = "!f() { \
+		branch=$(git branch --sort=-committerdate --format='%(refname:short)' \
+			| fzf --preview 'git show --color=always {}' --height 40% --layout reverse); \
+		[ -z \"$branch\" ] && return 0; \
+		wt_dir=$(git worktree list --porcelain \
+			| awk -v b=\"refs/heads/$branch\" '/^worktree /{d=substr($0,10)} /^branch /{if ($2==b) {print d; exit}}'); \
+		if [ -n \"$wt_dir\" ] && [ \"$wt_dir\" != \"$(git rev-parse --show-toplevel)\" ]; then \
+			cd \"$wt_dir\" && exec $SHELL; \
+		else \
+			git switch \"$branch\"; \
+		fi; \
+	}; f"
 
 	wt = worktree
 
