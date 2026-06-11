@@ -31,6 +31,9 @@ basics() {
     # Don't clear the screen after quitting a man page
     export MANPAGER="less -X"
 
+    # 1Password SSH agent
+    export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
     # Activate bash completion (installed using 'brew install bash_completion')
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 }

@@ -12,6 +12,9 @@ fish_add_path -gP $HOME/bin
 fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin
 fish_add_path -gP /opt/homebrew/opt/curl/bin
 
+# 1Password SSH agent
+set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
 # Prefer US English and use UTF-8 encoding
 set -gx LANG en_US
 set -gx LC_ALL en_US.UTF-8
