@@ -74,6 +74,7 @@ ask_for_sudo
 ./setup/git.sh
 ./setup/hyper.sh
 ./setup/node.sh
+./setup/augment.sh
 macos_tweaks
 ./setup/applications.sh
 
