@@ -119,6 +119,7 @@
 	name = Jørund B. Fagerjord
 	email = j.b.fagerjord@gmail.com
 [log]
+	# Requires diff-so-fancy >= HEAD-aa3bd95; ISO date parsing is not in 1.4.12
 	date = iso
 [pull]
 	ff = only
