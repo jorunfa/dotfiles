@@ -1,5 +1,11 @@
-startup --output_base=~/tmp/bazel/
+startup --output_user_root=~/tmp/bazel/
 build --disk_cache=~/tmp/bazelcache/
-build --action_env=PATH=.:/opt/homebrew/bin:/usr/local/bin:/bin:/usr/bin
-build --repository_cache=~/tmp/bazelrepos/
-fetch --repository_cache=~/tmp/bazelrepos/
+# Overrides --incompatible_strict_action_env in repos that set it (home rc wins
+# over workspace rc), and the leading '.' resolves tool names against the
+# sandbox cwd. Re-enable only if an action actually needs a homebrew binary.
+#build --action_env=PATH=.:/opt/homebrew/bin:/usr/local/bin:/bin:/usr/bin
+common --repository_cache=~/tmp/bazelrepos/
+common --repo_contents_cache=~/tmp/bazelrcc
+
+# Disk cache is otherwise unbounded (gc_max_size defaults to 0).
+build --experimental_disk_cache_gc_max_size=50G
