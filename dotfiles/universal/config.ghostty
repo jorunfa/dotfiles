@@ -1,4 +1,4 @@
-theme = snazzy
+theme = dark:snazzy,light:Catppuccin Latte
 # font-family = "Hack Nerd Font Mono"
 font-family = "JetBrains Mono"
 font-size = 14
