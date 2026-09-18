@@ -1,0 +1,10 @@
+# The built-in theme hardcodes 256-color pastels (user = 230, group = 187,
+# size = 229) that are unreadable on a light background. Named colors resolve
+# through the terminal palette instead, so they follow the Ghostty theme.
+# Missing fields fall back to the built-in theme
+user: dark_yellow
+group: dark_grey
+size:
+  small: dark_cyan
+  medium: dark_yellow
+  large: dark_red

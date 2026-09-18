@@ -1,0 +1,2 @@
+color:
+  theme: custom # Reads ~/.config/lsd/colors.yaml

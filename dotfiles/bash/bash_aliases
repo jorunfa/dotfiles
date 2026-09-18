@@ -36,11 +36,6 @@ if gls --color > /dev/null 2>&1; then colorflag="--color"; else colorflag="-G"; 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Only directories
-alias lsd='ls -l | grep "^d"'
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # List all files, long format, colorized, permissions in octal
 function lsa(){
 	ls -l  "$@" | awk '

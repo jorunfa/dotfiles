@@ -73,6 +73,7 @@ ask_for_sudo
 ./setup/vim.sh
 ./setup/git.sh
 ./setup/hyper.sh
+./setup/lsd.sh
 ./setup/node.sh
 ./setup/augment.sh
 macos_tweaks
