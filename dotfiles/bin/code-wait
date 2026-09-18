@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# $EDITOR has to be a single executable for tools that exec it directly without
+# splitting it into words (such as 'ghostty +edit-config'), so the --wait flag
+# lives here instead of in the variable
+exec code --wait "$@"

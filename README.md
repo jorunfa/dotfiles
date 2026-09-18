@@ -7,7 +7,7 @@
 ![dotfiles-demo](https://cloud.githubusercontent.com/assets/3471625/26286320/9818992c-3e62-11e7-9f4f-00e5ebb3ba0e.gif)
 
 
-TODO: Nevn at det også er mulig å kjøre bare deler av installeringsskriptet. For eksempel ./hyper.sh. Dog kan det være lurt å sjekke at du har installert prerequisites allerede, ellers kan skriptet feile.
+TODO: Nevn at det også er mulig å kjøre bare deler av installeringsskriptet. For eksempel ./ghostty.sh. Dog kan det være lurt å sjekke at du har installert prerequisites allerede, ellers kan skriptet feile.
 
 
 # But... What does the install script DO?
@@ -33,10 +33,9 @@ Lots of things! The following things will happen in cronological order:
   * Install vim plugins (see [.vimrc](https://github.com/jorunfa/dotfiles/blob/master/dotfiles/universal/vimrc))
 * **Git**
   * Set git name and email
-* **[?] Hyper**
-  * Install [Hyper](https://hyper.is/)
-  * Install HPM (hyper package manager)
-  * Install Hyper packages
+* **[?] Ghostty**
+  * Install [Ghostty](https://ghostty.org/)
+  * Symlink the [Ghostty config](https://github.com/jorunfa/dotfiles/blob/master/dotfiles/ghostty/config.ghostty)
 * **[?] Install global NPM packages**
 * **[?] Change macOS default (about 100 tweaks in total)**
 * **[?] Install applications (such as Chrome and Dropbox)**
@@ -48,8 +47,8 @@ For more information of what the **actual dotfiles** does, take a look at [sourc
 ![Snazzy theme by Sindre Sorhus](https://github.com/sindresorhus/terminal-snazzy/raw/master/screenshot.png)
 
 
-### Hyper
-You don't have to do anything. Just run `install.sh` or `setup/hyper.sh`.
+### Ghostty
+You don't have to do anything. Just run `install.sh` or `setup/ghostty.sh`.
 
 
 ### Terminal

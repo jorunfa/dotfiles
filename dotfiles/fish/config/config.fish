@@ -19,6 +19,11 @@ set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t
 set -gx LANG en_US
 set -gx LC_ALL en_US.UTF-8
 
+# Editor used by 'ghostty +edit-config' and friends (git uses core.editor instead).
+# code-wait is a wrapper from dotfiles/bin, since $EDITOR can't contain arguments
+set -gx EDITOR code-wait
+set -gx VISUAL code-wait
+
 # Start virtualfish (to automatically activate python virtualenvs)
 # eval (python -m virtualfish auto_activation)
 

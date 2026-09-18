@@ -19,7 +19,7 @@ symlink_dotfiles() {
     mkdir -p $destination_path
 
     # Whether to hide the symlinks or not (default is hidden)
-    # Example: true => ".hyper.js" false => "hyper.js"
+    # Example: true => ".vimrc" false => "vimrc"
     add_dot_in_front_of_filenames=${3:-true}
 
     # Where existing locations should be backed up

@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+#
+# Focus the Ghostty terminal surface (tab/split) that a process belongs to.
+#
+#   ghostty-focus              focus the surface this process is running in
+#   ghostty-focus --id         print the surface id of this process' surface
+#   ghostty-focus <surface-id> focus the given surface
+#
+# The surface id is resolved by writing a unique OSC-2 title to the controlling
+# tty and looking it up through Ghostty's AppleScript dictionary. The result is
+# cached per tty, so the title is only clobbered once per terminal.
+
+set -euo pipefail
+
+usage() {
+    sed -n '3,8p' "$0" | cut -c 3-
+}
+
+# Walk up the process tree until a process with a controlling tty is found.
+controlling_tty() {
+    local pid=$$ tty
+    while [ -n "$pid" ] && [ "$pid" != 1 ]; do
+        tty=$(ps -o tty= -p "$pid" 2>/dev/null | tr -d ' ')
+        if [ -n "$tty" ] && [ "$tty" != '??' ]; then
+            printf '%s\n' "$tty"
+            return 0
+        fi
+        pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ')
+    done
+    return 1
+}
+
+surface_id() {
+    local tty cache marker id
+    tty=$(controlling_tty) || return 1
+    [ -w "/dev/$tty" ] || return 1
+
+    cache="${TMPDIR:-/tmp}/ghostty-focus-${tty//\//-}"
+    if [ -s "$cache" ]; then
+        cat "$cache"
+        return 0
+    fi
+
+    marker="ghostty-focus-$$-$RANDOM"
+    printf '\033]2;%s\007' "$marker" > "/dev/$tty"
+    sleep 0.4
+    id=$(osascript -e "tell application \"Ghostty\" to get id of first terminal whose name is \"$marker\"" 2>/dev/null) || id=''
+    printf '\033]2;\007' > "/dev/$tty"
+
+    [ -n "$id" ] || return 1
+    printf '%s\n' "$id" > "$cache"
+    printf '%s\n' "$id"
+}
+
+focus() {
+    osascript \
+        -e 'on run argv' \
+        -e 'tell application "Ghostty"' \
+        -e 'activate' \
+        -e 'focus (first terminal whose id is (item 1 of argv))' \
+        -e 'end tell' \
+        -e 'end run' \
+        "$1" > /dev/null
+}
+
+case "${1:-}" in
+    -h | --help)
+        usage
+        ;;
+    --id)
+        surface_id
+        ;;
+    '')
+        focus "$(surface_id)"
+        ;;
+    -*)
+        usage >&2
+        exit 64
+        ;;
+    *)
+        focus "$1"
+        ;;
+esac

@@ -13,9 +13,6 @@ BREW_CASKS="google-chrome keybase rectangle visual-studio-code alfred sublime-te
 # NODE
 # NPM_PACKAGES="n ncu"
 
-# HYPER (installed with hpm)
-# HPM_PACKAGES="hyper-snazzy hyperlinks"
-
 # BREW (OPTIONAL)
 OPTIONAL_BREW_PACKAGES="wget gpg curl rsync ack awscli git lolcat nyancat"
 # OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn awscli git lolcat nyancat streamlink ruby"

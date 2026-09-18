@@ -10,6 +10,9 @@ create_symlinks() {
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/config/" ~/.config/fish/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/functions/" ~/.config/fish/functions/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/universal/"
+
+    # ~/bin is added to PATH in config.fish
+    ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/bin/" ~/bin/ false
     printf "\n"
 }
 
