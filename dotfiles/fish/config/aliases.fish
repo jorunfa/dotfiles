@@ -5,35 +5,35 @@ function ....  ; cd ../../.. ; end
 function ..... ; cd ../../../.. ; end
 
 # git shortcuts
-alias master="git checkout master"
-alias push="git push"
+abbr master 'git checkout master'
+abbr push 'git push'
 
 # Edit hosts file
-alias hosts='sudo vim /etc/hosts'
+abbr hosts 'sudo vim /etc/hosts'
 
 # Check free diskspace
-alias diskspace_report="df -P -kHl"
+abbr diskspace_report 'df -P -kHl'
 
 # Recursively delete `.DS_Store` files
-alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+abbr cleanup_dsstore "find . -name '*.DS_Store' -type f -ls -delete"
 
 # Run previous command with sudo
 function sudo!!
     eval sudo $history[1]
 end
 
-alias c="bat"
+abbr c bat
 
 
-alias ls='lsd'
+abbr ls lsd
 
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias tres='ls --tree'
+abbr l 'lsd -l'
+abbr la 'lsd -a'
+abbr lla 'lsd -la'
+abbr tres 'lsd --tree'
 
 # most used commands
-alias g="git"
-alias k="kubectl"
-alias kx="kubectx"
-alias b="bazel"
+abbr g git
+abbr k kubectl
+abbr kx kubectx
+abbr b bazel
