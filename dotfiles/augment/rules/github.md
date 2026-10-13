@@ -2,6 +2,7 @@
 
 - Prefer `gh` CLI tool over GitHub API for creating PRs and other GitHub
   operations
-- Some organizations have OAuth App access restrictions that block the
-  GitHub API tool; see `local.md`
+- If the GitHub API tool fails with 403 (e.g. SAML SSO enforcement on an
+  organization), fall back to `gh`; known affected organizations may be
+  listed in `local.md`
 
