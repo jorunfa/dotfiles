@@ -4,3 +4,5 @@ font-family = "JetBrains Mono"
 font-size = 14
 macos-option-as-alt = true
 scrollback-limit = 300_000_000
+working-directory = home
+window-inherit-working-directory = false
