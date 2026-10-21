@@ -43,7 +43,7 @@
 		wt_dir=$(git worktree list --porcelain \
 			| awk -v b=\"refs/heads/$branch\" '/^worktree /{d=substr($0,10)} /^branch /{if ($2==b) {print d; exit}}'); \
 		if [ -n \"$wt_dir\" ] && [ \"$wt_dir\" != \"$(git rev-parse --show-toplevel)\" ]; then \
-			cd \"$wt_dir\" && exec $SHELL; \
+			cd \"$wt_dir\" && unset GIT_DIR GIT_PREFIX && exec $SHELL; \
 		else \
 			git switch \"$branch\"; \
 		fi; \
@@ -54,7 +54,7 @@
 	wta = "!f() { \
 		dir=\"$(git rev-parse --show-toplevel)/../$(basename $(git rev-parse --show-toplevel))-$1\"; \
 		git worktree add -b \"$1\" \"$dir\" && \
-		cd \"$dir\" && exec $SHELL; \
+		cd \"$dir\" && unset GIT_DIR GIT_PREFIX && exec $SHELL; \
 	}; f"
 
 	wtr = "!f() { \
