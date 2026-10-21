@@ -52,8 +52,13 @@
 	wt = worktree
 
 	wta = "!f() { \
-		dir=\"$(git rev-parse --show-toplevel)/../$(basename $(git rev-parse --show-toplevel))-$1\"; \
-		git worktree add -b \"$1\" \"$dir\" && \
+		main_dir=\"$(git worktree list --porcelain | head -1 | sed 's/worktree //')\"; \
+		dir=\"$main_dir-$(printf %s \"$1\" | tr / -)\"; \
+		if [ -n \"$(git for-each-ref --format=x \"refs/heads/$1\" \"refs/remotes/*/$1\")\" ]; then \
+			git worktree add \"$dir\" \"$1\"; \
+		else \
+			git worktree add -b \"$1\" \"$dir\"; \
+		fi && \
 		cd \"$dir\" && unset GIT_DIR GIT_PREFIX && exec $SHELL; \
 	}; f"
 
