@@ -3,6 +3,17 @@
 	cm = commit -m
 	ca = commit -a
 	cam = commit -am
+
+	cai = "!f() { \
+		case \" $* \" in *' -a '*|*' --all '*) diff=$(git diff HEAD) ;; *) diff=$(git diff --cached) ;; esac; \
+		[ -z \"$diff\" ] && echo 'Nothing to commit' >&2 && return 1; \
+		msg=$(printf '%s\\n' \"$diff\" | auggie --print --quiet --ask --dont-save-session \
+			\"Write a git commit message for the diff on stdin. Match the style of these recent commits: $(git log -10 --format='%s' 2>/dev/null). Output only the commit message, no code fences or commentary.\" \
+			2>/dev/null | sed '/^Request ID: /d'); \
+		[ -z \"$msg\" ] && echo 'auggie returned no message' >&2 && return 1; \
+		git commit -e -m \"$msg\" \"$@\"; \
+	}; f"
+	# Commit with a message written by auggie from the staged diff (or all tracked changes with -a). Opens the editor to review.
 	s = status --short --branch
 	co = checkout
 	df = diff
