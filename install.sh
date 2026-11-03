@@ -72,6 +72,7 @@ ask_for_sudo
 ./setup/bash.sh
 ./setup/vim.sh
 ./setup/git.sh
+./setup/jj.sh
 ./setup/ghostty.sh
 ./setup/lsd.sh
 ./setup/node.sh
