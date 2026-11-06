@@ -50,6 +50,10 @@ fish_add_path -gP $PNPM_HOME
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Let non-Homebrew node builds (e.g. mise) trust the CAs Homebrew syncs from the
+# macOS keychain. Unlike NODE_OPTIONS=--use-system-ca, this works on any node version.
+set -gx NODE_EXTRA_CA_CERTS /opt/homebrew/etc/ca-certificates/cert.pem
+
 # idea
 fish_add_path -gP '/Applications/IntelliJ IDEA.app/Contents/MacOS'
 

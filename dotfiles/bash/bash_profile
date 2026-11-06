@@ -140,6 +140,9 @@ unset -f folder_navigation
 unset -f history_tweaks
 
 
+# Let non-Homebrew node builds (e.g. mise) trust the CAs Homebrew syncs from the macOS keychain
+export NODE_EXTRA_CA_CERTS=/opt/homebrew/etc/ca-certificates/cert.pem
+
 # mise
 eval "$(mise activate bash)"
 
