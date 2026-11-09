@@ -7,11 +7,13 @@ source "${SCRIPT_DIR}/utils.sh"
 create_symlinks() {
     print_info "Creating symlinks to the Augment rules"
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/augment/rules/" ~/.augment/rules/ false
+    print_info "Creating symlinks to the Augment skills"
+    ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/augment/skills/" ~/.augment/skills/ false
     printf "\n"
 }
 
 
 print_heading "Augment"
-print_in_gray "Rules that shape how the Augment agent behaves\n\n"
+print_in_gray "Rules and skills that shape how the Augment agent behaves\n\n"
 
 create_symlinks

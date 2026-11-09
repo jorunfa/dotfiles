@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+#
+# Find git worktrees that are safe to delete and offer to remove them.
+#
+#   wt-clean [options] [root]   scan worktrees directly under root (default ~/tmp/projects)
+#
+#   -n, --dry-run   only list worktrees, do not offer to remove them
+#   -y, --yes       remove safe worktrees without asking
+#   --only PATH     only consider this worktree instead of scanning root (repeatable)
+#   --min-age DAYS  only consider worktrees safe whose last commit and creation are
+#                   both older than DAYS (default 3)
+#   --no-fetch      skip "git fetch --prune" of the main repositories
+#   -h, --help      show this help
+#
+# Without a terminal on stdin and without --yes, it only lists.
+#
+# Status per worktree:
+#   pushed       clean, every commit exists on a remote            -> safe
+#   merged       clean, HEAD is the head of a merged GitHub PR     -> safe
+#   gone:N       clean, upstream deleted, N commits not on remote  -> check manually
+#   unpushed:N   clean, N commits not on any remote                -> keep
+#   dirty        uncommitted or untracked changes                  -> keep
+#   locked       worktree is locked                                -> keep
+
+set -euo pipefail
+
+usage() {
+    sed -n '3,23p' "$0" | cut -c 3-
+}
+
+root="$HOME/tmp/projects"
+remove=true
+min_age=3
+yes=false
+fetch=true
+only=()
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -n|--dry-run) remove=false ;;
+        --only)
+            [ -n "${2:-}" ] || { echo "--only needs a worktree path" >&2; exit 2; }
+            only+=("$2"); shift ;;
+        --min-age)
+            [[ "${2:-}" =~ ^[0-9]+$ ]] || { echo "--min-age needs a number of days" >&2; exit 2; }
+            min_age="$2"; shift ;;
+        -y|--yes) yes=true ;;
+        --no-fetch) fetch=false ;;
+        -h|--help) usage; exit 0 ;;
+        -*) echo "Unknown option: $1" >&2; usage >&2; exit 2 ;;
+        *) root="$1" ;;
+    esac
+    shift
+done
+
+targets=()
+if [ ${#only[@]} -gt 0 ]; then
+    for p in "${only[@]}"; do
+        if [ -f "${p%/}/.git" ]; then
+            targets+=("$(cd "$p" && pwd -P)")
+        else
+            echo "Not a worktree, skipping: $p" >&2
+        fi
+    done
+else
+    root="${root%/}"
+    [ -d "$root" ] || { echo "Not a directory: $root" >&2; exit 2; }
+    for wt in "$root"/*/; do
+        [ -f "$wt.git" ] && targets+=("${wt%/}")
+    done
+fi
+
+if ! $yes && ! [ -t 0 ]; then
+    remove=false
+fi
+
+human() {
+    awk -v k="$1" 'BEGIN {
+        split("K M G T", u, " "); i = 1
+        while (k >= 1024 && i < 4) { k /= 1024; i++ }
+        printf (k < 10 && i > 1) ? "%.1f%s" : "%d%s", k, u[i]
+    }'
+}
+
+ago() {
+    awk -v s="$(( $(date +%s) - $1 ))" 'BEGIN {
+        if (s < 3600) n = int(s / 60) " minutes"
+        else if (s < 172800) n = int(s / 3600) " hours"
+        else n = int(s / 86400) " days"
+        print n " ago"
+    }'
+}
+
+now=$(date +%s)
+
+has_gh=false
+command -v gh >/dev/null 2>&1 && has_gh=true
+
+seen_repos=$'\n'
+rows=()
+removable=()
+removable_kb=0
+
+for wt in ${targets[@]+"${targets[@]}"}; do
+    common_dir=$(git -C "$wt" rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || continue
+    main_dir=$(dirname "$common_dir")
+
+    if [[ "$seen_repos" != *$'\n'"$main_dir"$'\n'* ]]; then
+        seen_repos+="$main_dir"$'\n'
+        git -C "$main_dir" worktree prune
+        if $fetch; then
+            echo "Fetching $(basename "$main_dir")..." >&2
+            git -C "$main_dir" fetch --all --prune --quiet 2>/dev/null \
+                || echo "  fetch failed, results may be stale" >&2
+        fi
+    fi
+
+    branch=$(git -C "$wt" symbolic-ref --quiet --short HEAD 2>/dev/null || echo '(detached)')
+    age=$(git -C "$wt" log -1 --format=%cr 2>/dev/null || echo '?')
+    committed=$(git -C "$wt" log -1 --format=%ct 2>/dev/null || echo 0)
+    created=$(stat -f %B "$wt/.git" 2>/dev/null || stat -c %W "$wt/.git" 2>/dev/null || echo 0)
+    kb=$(du -sk "$wt" 2>/dev/null | cut -f1)
+
+    if git -C "$main_dir" worktree list --porcelain | grep -A5 -Fx "worktree $wt" | grep -q '^locked'; then
+        status=locked
+    elif [ -n "$(git -C "$wt" status --porcelain 2>/dev/null)" ]; then
+        status=dirty
+    else
+        ahead=$(git -C "$wt" rev-list --count HEAD --not --remotes)
+        if [ "$ahead" -eq 0 ]; then
+            status=pushed
+        else
+            status="unpushed:$ahead"
+            head_sha=$(git -C "$wt" rev-parse HEAD)
+            if $has_gh && [ "$branch" != '(detached)' ] \
+                && (cd "$wt" && gh pr list --head "$branch" --state merged --json headRefOid \
+                    --jq '.[].headRefOid' 2>/dev/null) | grep -qx "$head_sha"; then
+                status=merged
+            elif [ "$branch" != '(detached)' ] \
+                && git -C "$wt" rev-parse --quiet --verify "$branch@{upstream}" >/dev/null 2>&1; then
+                :
+            elif [ -n "$(git -C "$wt" config "branch.$branch.merge" 2>/dev/null)" ]; then
+                status="gone:$ahead"
+            fi
+        fi
+    fi
+
+    rows+=("$kb"$'\t'"$(human "$kb")"$'\t'"$status"$'\t'"$age"$'\t'"$(ago "$created")"$'\t'"$branch"$'\t'"$wt")
+    cutoff=$(( now - min_age * 86400 ))
+    if { [ "$status" = pushed ] || [ "$status" = merged ]; } \
+        && [ "$committed" -le "$cutoff" ] && [ "$created" -le "$cutoff" ]; then
+        removable+=("$main_dir"$'\t'"$wt")
+        removable_kb=$((removable_kb + kb))
+    fi
+done
+
+if [ ${#rows[@]} -eq 0 ]; then
+    echo "No worktrees found"
+    exit 0
+fi
+
+{
+    printf 'SIZE\tSTATUS\tLAST COMMIT\tCREATED\tBRANCH\tPATH\n'
+    printf '%s\n' "${rows[@]}" | sort -t$'\t' -k1,1nr | cut -f2-
+} | column -t -s$'\t'
+
+echo
+age_note=''
+[ "$min_age" -eq 0 ] || age_note=" (committed and created over $min_age days ago)"
+echo "${#removable[@]} of ${#rows[@]} worktrees safe to remove$age_note, reclaiming ~$(human "$removable_kb")"
+
+if ! $remove || [ ${#removable[@]} -eq 0 ]; then
+    exit 0
+fi
+
+if ! $yes; then
+    read -r -p 'Remove them? [y/N] ' answer
+    [[ "$answer" =~ ^[Yy]$ ]] || exit 0
+fi
+
+failed=0
+for entry in "${removable[@]}"; do
+    main_dir="${entry%%$'\t'*}"
+    wt="${entry#*$'\t'}"
+    if git -C "$main_dir" worktree remove "$wt"; then
+        echo "Removed $wt"
+    else
+        failed=$((failed + 1))
+    fi
+done
+
+[ "$failed" -eq 0 ] || { echo "$failed worktree(s) could not be removed" >&2; exit 1; }
