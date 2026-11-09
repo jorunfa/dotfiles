@@ -148,3 +148,5 @@
 	useHttpPath = true
 [credential "https://api.github.com"]
 	provider = github
+[credential "https://github-hyc.scm.engit.cisco.com"]
+	provider = github

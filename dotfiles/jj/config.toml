@@ -8,3 +8,7 @@ email = "j.b.fagerjord@gmail.com"
 # Never rewrite commits that have been pushed, so PRs never need a force-push.
 # Use --ignore-immutable to override
 "immutable_heads()" = "builtin_immutable_heads() | remote_bookmarks()"
+
+[aliases]
+# Move the nearest bookmark behind @- forward to @-
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
