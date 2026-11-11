@@ -10,7 +10,7 @@
 		prompt=$(mktemp); \
 		printf 'Write a git commit message for the diff below. Match the style of these recent commits:\\n%s\\n\\nOutput only the commit message, no code fences or commentary.\\n\\n%s\\n' \
 			\"$(git log -10 --format='%s' 2>/dev/null)\" \"$diff\" > \"$prompt\"; \
-		msg=$(auggie --print --quiet --ask --dont-save-session --instruction-file \"$prompt\" </dev/null \
+		msg=$(auggie --print --no-tools --no-session @\"$prompt\" </dev/null \
 			2>/dev/null | sed '/^Request ID: /d'); \
 		rm -f \"$prompt\"; \
 		[ -z \"$msg\" ] && echo 'auggie returned no message' >&2 && return 1; \

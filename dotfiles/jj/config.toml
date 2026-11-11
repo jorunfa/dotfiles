@@ -14,3 +14,24 @@ fetch = ["git", "fetch"]
 push = ["git", "push"]
 # Move the nearest bookmark behind @- forward to @-
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+# Commit @ with a message written by auggie from its diff. Pass -e to review in the editor,
+# and paths to commit only those
+cai = ["util", "exec", "--", "bash", "-c", '''
+edit=
+paths=()
+for a in "$@"; do
+	case "$a" in -e|--editor) edit=--editor ;; *) paths+=("$a") ;; esac
+done
+diff=$(jj diff --git --color=never --no-pager "${paths[@]}")
+[ -z "$diff" ] && echo 'Nothing to commit' >&2 && exit 1
+prompt=$(mktemp)
+printf 'Write a git commit message for the diff below. Match the style of these recent commits:\n%s\n\nOutput only the commit message, no code fences or commentary.\n\n%s\n' \
+	"$(jj log --no-graph --no-pager --color=never -r '::@- ~ root()' --limit 10 -T 'description.first_line() ++ "\n"')" \
+	"$diff" > "$prompt"
+msg=$(auggie --print --no-tools --no-session -w "$JJ_WORKSPACE_ROOT" @"$prompt" </dev/null \
+	2>/dev/null | sed '/^Request ID: /d')
+rm -f "$prompt"
+[ -z "$msg" ] && echo 'auggie returned no message' >&2 && exit 1
+jj commit -m "$msg" $edit "${paths[@]}"
+''', ""]
+
