@@ -74,3 +74,8 @@ tildify() {
     absolute_path=$1
     echo ${absolute_path/$HOME/\~}
 }
+
+# A fresh Homebrew install isn't on PATH until the shell is restarted
+if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi

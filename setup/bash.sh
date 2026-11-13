@@ -20,8 +20,8 @@ install_bash_packages() {
 add_bash_as_allowed_shell() {
     print_info "Adding Bash 4 to list of allowed shells"
     # Add bash to /etc/shells (the list of allowed shells)
-    # If "/usr/local/bin/fish" isn't already in "/etc/shells", add it to the list"
-    grep -q -F '/usr/local/bin/bash' '/etc/shells' || echo '/usr/local/bin/bash' | sudo tee -a '/etc/shells'
+    # If "/opt/homebrew/bin/bash" isn't already in "/etc/shells", add it to the list"
+    grep -q -F '/opt/homebrew/bin/bash' '/etc/shells' || echo '/opt/homebrew/bin/bash' | sudo tee -a '/etc/shells'
     print_result $? "Add Bash 4 to allowed shells"
 }
 

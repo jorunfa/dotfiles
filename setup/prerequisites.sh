@@ -26,12 +26,9 @@ install_xcode_select() {
 install_brew() {
     print_info "Installing Homebrew"
     if ! which brew > /dev/null; then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        print_info "Running brew doctor"
-        brew doctor
-        print_info "Setting up brew cask"
-        brew tap caskroom/cask
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         print_result $? "Install Homebrew\n"
+        eval "$(/opt/homebrew/bin/brew shellenv)"
     else
         print_success "Oh! Homebrew was already installed!\n"
     fi
@@ -55,16 +52,8 @@ install_optional_brew_packages() {
     fi
 }
 
-install_python_packages() {
-    print_info "Installing python packages:"
-    print_list $@
-    pip3 install "$@"
-    print_result $? "Install python packages\n"
-}
-
 print_heading "Install prerequisites"
 install_xcode_select
 install_brew
 install_brew_packages $ESSENTIAL_BREW_PACKAGES
-install_python_packages $PIP_PACKAGES
 install_optional_brew_packages $OPTIONAL_BREW_PACKAGES
