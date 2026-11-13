@@ -1,6 +1,6 @@
 # This prompt inspired by gf3, sindresorhus, alrra, and mathiasbynens.
 
-default_username='jorunfa'
+default_username="$(logname 2>/dev/null)"
 
 
 if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh

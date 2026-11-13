@@ -1,8 +1,6 @@
 #:schema https://docs.jj-vcs.dev/latest/config-schema.json
 
-[user]
-name = "Jørund B. Fagerjord"
-email = "j.b.fagerjord@gmail.com"
+# user.name and user.email live in personal/jj/00-personal.toml (symlinked into conf.d/)
 
 [revset-aliases]
 # Never rewrite commits that have been pushed, so PRs never need a force-push.

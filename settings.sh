@@ -1,6 +1,4 @@
-# GIT
-GIT_NAME="Jørund B. Fagerjord"
-GIT_EMAIL="j.b.fagerjord@gmail.com"
+# Git and jj name and email are set in personal/ (see the README)
 
 # APPLICATIONS
 # The applications below are regular apps such as Chrome.
@@ -23,14 +21,11 @@ OPTIONAL_BREW_PACKAGES="wget gpg curl rsync ack awscli git lolcat nyancat"
 # --------------------------------------------------------------
 
 # BREW (ESSENTIAL)
-ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish node python pyenv vim bat ripgrep fd lsd sd gh jj dust duf dnsmasq duf"
+# config.fish expects mise, starship and fzf to be installed
+ESSENTIAL_BREW_PACKAGES="coreutils diff-so-fancy fish mise starship fzf node python pyenv vim bat ripgrep fd lsd sd gh jj dust duf dnsmasq"
 
-# FISH (installed with fisherman)
-FISHERMAN_PACKAGES="rafaelrinaldi/pure jethrokuan/z jbonjean/re-search evanlucas/fish-kubectl-completions"
-# no longer used: FISHERMAN_PACKAGES="jbonjean/re-search"
+# FISH (installed with fisher)
+FISHERMAN_PACKAGES="jethrokuan/z evanlucas/fish-kubectl-completions"
 
 # BASH (installed with brew)
 BASH_BREW_PACKAGES="bash bash-completion z"
-
-# PYTHON
-PIP_PACKAGES="virtualenv virtualfish"

@@ -15,22 +15,12 @@ symlink_dotfiles() {
     # Where the symlinks should be placed. Default is ~/
     destination_path=${2:-~/}
 
-    # Create destination_path folders (if necessary)
-    mkdir -p $destination_path
-
     # Whether to hide the symlinks or not (default is hidden)
     # Example: true => ".vimrc" false => "vimrc"
     add_dot_in_front_of_filenames=${3:-true}
 
-    # Where existing locations should be backed up
-    backup_path=~/dotfiles_old
-    mkdir -p $backup_path
-
-
-
-    # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-    # print_info "Creating symlinks to the dotfiles"
-    for file in $absolute_source_path/*; do
+    # Existing files are moved to ~/dotfiles_old (see link_file in utils.sh)
+    for file in "$absolute_source_path"/*; do
         file_name=${file##*/} # $file = /absolute/path/to/file.txt  VS.  $file_name = file.txt
 
         if [ "$add_dot_in_front_of_filenames" = true ]; then
@@ -39,15 +29,7 @@ symlink_dotfiles() {
             absolute_symlink_path=$destination_path$file_name
         fi
 
-        # If the file already exists, move it to ~/dotfiles_old
-        if [ -e $absolute_symlink_path ]; then
-            print_info "Existing dotfile detected! Moving $file_name to ~/dotfiles_old"
-            mv -f $absolute_symlink_path $backup_path
-        fi
-
-        ln -s $file $absolute_symlink_path
-        print_result $? "$(tildify $absolute_symlink_path) → $(tildify $file)"
-
+        link_file "$file" "$absolute_symlink_path"
     done
 }
 

@@ -48,7 +48,7 @@
 			git commit -m \"$1\" && \
 			shift && \
 			git push -u origin && \
-			gh pr create --fill-first --web --label team-mobility-products"
+			gh pr create --fill-first --web"
 
 	w = "!f() { \
 		branch=$(git branch --sort=-committerdate --format='%(refname:short)' \
@@ -93,7 +93,6 @@
 
 [credential]
 	helper = osxkeychain
-	helper = /usr/local/share/gcm-core/git-credential-manager
 
 # Push easily. http://stackoverflow.com/a/23918418/89484
 [push]
@@ -134,9 +133,6 @@
 	added = green
 	changed = red
 	untracked = cyan
-[user]
-	name = Jørund B. Fagerjord
-	email = j.b.fagerjord@gmail.com
 [log]
 	# Requires diff-so-fancy >= HEAD-aa3bd95; ISO date parsing is not in 1.4.12
 	date = iso
@@ -144,9 +140,11 @@
 	ff = only
 [init]
 	defaultBranch = main
-[credential "https://dev.azure.com"]
-	useHttpPath = true
-[credential "https://api.github.com"]
-	provider = github
-[credential "https://github-hyc.scm.engit.cisco.com"]
-	provider = github
+
+# Kept last so they can override anything above.
+# Name, email and work credentials, from personal/git/gitconfig.personal
+[include]
+	path = ~/.gitconfig.personal
+# Settings for this machine only. Not tracked by the dotfiles
+[include]
+	path = ~/.gitconfig.local
