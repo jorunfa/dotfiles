@@ -141,7 +141,10 @@
 [init]
 	defaultBranch = main
 
-# Name, email and machine-specific settings (e.g. work credentials). Not tracked by the dotfiles.
-# Kept last so it can override anything above
+# Kept last so they can override anything above.
+# Name, email and work credentials, from personal/git/gitconfig.personal
+[include]
+	path = ~/.gitconfig.personal
+# Settings for this machine only. Not tracked by the dotfiles
 [include]
 	path = ~/.gitconfig.local

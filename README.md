@@ -7,18 +7,17 @@ Originally forked from [mortenvn/dotfiles](https://github.com/mortenvn/dotfiles)
 
 
 # Getting started
-These dotfiles are opinionated. If you want to use them yourself, **fork the repo** so you can make it your own.
+These are my dotfiles, including my own git identity and work settings (see [personal/](#personal-and-machine-specific-settings)). If you want to use them yourself, **fork the repo** so you can make it your own.
 
-1. Clone your fork. On a brand-new Mac, HTTPS is easiest, since you probably don't have an SSH key on GitHub yet:
+1. Clone the repo (or your fork). On a brand-new Mac, HTTPS is easiest, since you probably don't have an SSH key on GitHub yet:
    ```sh
    git clone https://github.com/<you>/dotfiles.git ~/projects/dotfiles
    ```
    The dotfiles are symlinked from wherever you clone them, so pick a permanent location.
-2. Edit **settings.sh**
-    * Fill in your git name and email (or leave them empty to be asked)
-    * Remove applications (`BREW_CASKS`) and packages you don't want
-3. Skim **setup/macos.sh** and remove tweaks you don't want
-4. Run the install script: `./install.sh`
+2. If you forked: replace the files in **[personal/](personal)** with your own settings, or empty them. The installer will ask for your git name and email if none are set
+3. Edit **settings.sh**, and remove applications (`BREW_CASKS`) and packages you don't want
+4. Skim **setup/macos.sh** and remove tweaks you don't want
+5. Run the install script: `./install.sh`
 
 The installer asks before every optional step, and backs up any existing dotfiles to `~/dotfiles_old`.
 
@@ -48,10 +47,11 @@ Lots of things! The following things will happen in chronological order:
   * Install vim-plug (vim package manager)
   * Install vim plugins (see [.vimrc](dotfiles/universal/vimrc))
 * **Git**
-  * Save your name and email to `~/.gitconfig.local`
+  * Symlink the [personal git config](personal/git/gitconfig.personal)
+  * Ask for your name and email if it doesn't set them, and save them to `~/.gitconfig.local`
 * **jj**
-  * Symlink the [jj config](dotfiles/jj/config.toml)
-  * Copy your git name and email to `~/.config/jj/conf.d/local.toml`
+  * Symlink the [jj config](dotfiles/jj/config.toml) and the [personal jj config](personal/jj/00-personal.toml)
+  * Copy your git name and email to `~/.config/jj/conf.d/local.toml` if the personal config doesn't set them
 * **[?] Ghostty**
   * Install [Ghostty](https://ghostty.org/)
   * Symlink the [Ghostty config](dotfiles/ghostty/config.ghostty)
@@ -67,13 +67,17 @@ For more information on what the **actual dotfiles** do, take a look at the [sou
 
 
 # Personal and machine-specific settings
-The shared dotfiles are symlinked into your home folder, so editing them edits the repo. Put things that only apply to you or one machine (work credentials, secrets, company-specific aliases) in these untracked files instead:
+Settings come in three layers. Later layers override earlier ones:
 
-| File | Used for |
-| --- | --- |
-| `~/.gitconfig.local` | Git name, email, work credential helpers and alias overrides. Included at the bottom of [.gitconfig](dotfiles/universal/gitconfig) |
-| `~/.config/jj/conf.d/local.toml` | jj name and email, or anything else that shouldn't be shared |
-| `~/.config/fish/local.fish` | Fish environment variables and functions, e.g. `set -gx AWS_SSO_SESSION my-company` for `awslogin` |
+1. **[dotfiles/](dotfiles)**: shared settings that should work for anyone
+2. **[personal/](personal)**: my name, email and work settings. Tracked, so a fresh clone has everything. If you forked, replace these with your own
+3. **Local files**: settings for one machine, or secrets. Not tracked
+
+| Tool | Personal (tracked) | Local (untracked) |
+| --- | --- | --- |
+| git | [personal/git/gitconfig.personal](personal/git/gitconfig.personal) → `~/.gitconfig.personal` | `~/.gitconfig.local` |
+| jj | [personal/jj/00-personal.toml](personal/jj/00-personal.toml) → `~/.config/jj/conf.d/00-personal.toml` | `~/.config/jj/conf.d/local.toml` |
+| fish | [personal/fish/personal.fish](personal/fish/personal.fish) → `~/.config/fish/conf.d/personal.fish` | `~/.config/fish/local.fish` |
 
 A few things in the config assume specific tools, and are skipped if they're missing:
 * **1Password SSH agent**: `SSH_AUTH_SOCK` is only set if the 1Password agent is enabled

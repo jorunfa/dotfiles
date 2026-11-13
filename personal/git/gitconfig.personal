@@ -1,0 +1,24 @@
+# Symlinked to ~/.gitconfig.personal and included by dotfiles/universal/gitconfig.
+# If you forked this repo: replace this with your own settings (or empty it)
+
+[user]
+	name = Jørund B. Fagerjord
+	email = j.b.fagerjord@gmail.com
+
+[alias]
+	f = "!git co -b $(openssl rand -hex 3) && \
+			git add $(git rev-parse --show-toplevel) && \
+			git commit -m \"$1\" && \
+			shift && \
+			git push -u origin && \
+			gh pr create --fill-first --web --label team-mobility-products"
+
+# Git Credential Manager, for work hosts
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[credential "https://api.github.com"]
+	provider = github
+[credential "https://github-hyc.scm.engit.cisco.com"]
+	provider = github

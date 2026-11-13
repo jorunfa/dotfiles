@@ -1,8 +1,4 @@
-# GIT
-# Used for both git and jj. Leave empty to be asked during the install.
-# Saved to ~/.gitconfig.local and ~/.config/jj/conf.d/local.toml (not tracked by the dotfiles)
-GIT_NAME=""
-GIT_EMAIL=""
+# Git and jj name and email are set in personal/ (see the README)
 
 # APPLICATIONS
 # The applications below are regular apps such as Chrome.

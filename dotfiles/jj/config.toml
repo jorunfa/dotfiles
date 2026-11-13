@@ -1,6 +1,6 @@
 #:schema https://docs.jj-vcs.dev/latest/config-schema.json
 
-# user.name and user.email live in ~/.config/jj/conf.d/local.toml (set by setup/jj.sh)
+# user.name and user.email live in personal/jj/00-personal.toml (symlinked into conf.d/)
 
 [revset-aliases]
 # Never rewrite commits that have been pushed, so PRs never need a force-push.

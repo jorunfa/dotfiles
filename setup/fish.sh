@@ -10,6 +10,7 @@ create_symlinks() {
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/config/" ~/.config/fish/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/functions/" ~/.config/fish/functions/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/conf.d/" ~/.config/fish/conf.d/ false
+    ${SCRIPT_DIR}/symlink_dotfiles.sh "../personal/fish/" ~/.config/fish/conf.d/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/completions/" ~/.config/fish/completions/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/universal/"
 
