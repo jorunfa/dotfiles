@@ -12,8 +12,11 @@ fish_add_path -gP $HOME/bin
 fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin
 fish_add_path -gP /opt/homebrew/opt/curl/bin
 
-# 1Password SSH agent
-set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+# 1Password SSH agent (only if 1Password's SSH agent is enabled)
+set -l op_agent_sock "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+if test -S $op_agent_sock
+    set -gx SSH_AUTH_SOCK $op_agent_sock
+end
 
 # Prefer US English and use UTF-8 encoding
 set -gx LANG en_US
@@ -72,7 +75,9 @@ fish_add_path -gPa $HOME/.local/bin
 # The Homebrew mise package's vendor conf.d snippet that would auto-activate
 # mise too early is suppressed via dotfiles/fish/conf.d/mise-activate.fish.
 mise activate fish | source
-set -gx CATALINA_HOME (mise where tomcat 2>/dev/null)/(ls (mise where tomcat 2>/dev/null) 2>/dev/null)[1]
+if set -l tomcat_dir (mise where tomcat 2>/dev/null)
+    set -gx CATALINA_HOME $tomcat_dir/(ls $tomcat_dir)[1]
+end
 source (/opt/homebrew/bin/starship init fish --print-full-init | psub)
 
 # fzf
