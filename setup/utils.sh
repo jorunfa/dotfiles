@@ -75,6 +75,36 @@ tildify() {
     echo ${absolute_path/$HOME/\~}
 }
 
+# Symlink $2 → $1. Safe to run again:
+# * Does nothing if the symlink is already correct
+# * Replaces symlinks that point elsewhere (or nowhere)
+# * Moves real files to ~/dotfiles_old, without overwriting earlier backups
+link_file() {
+    source_file=$1
+    link_path=$2
+
+    if [ "$(readlink "$link_path")" = "$source_file" ]; then
+        print_success "$(tildify "$link_path") → $(tildify "$source_file") (already linked)"
+        return 0
+    fi
+
+    if [ -L "$link_path" ]; then
+        rm "$link_path"
+    elif [ -e "$link_path" ]; then
+        backup_path=~/dotfiles_old/$(basename "$link_path")
+        if [ -e "$backup_path" ] || [ -L "$backup_path" ]; then
+            backup_path=$backup_path.$(date +%Y%m%d%H%M%S)
+        fi
+        print_info "Existing file detected! Moving it to $(tildify "$backup_path")"
+        mkdir -p ~/dotfiles_old
+        mv "$link_path" "$backup_path"
+    fi
+
+    mkdir -p "$(dirname "$link_path")"
+    ln -s "$source_file" "$link_path"
+    print_result $? "$(tildify "$link_path") → $(tildify "$source_file")"
+}
+
 # A fresh Homebrew install isn't on PATH until the shell is restarted
 if [ -x /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"

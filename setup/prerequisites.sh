@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/utils.sh"
 install_xcode_select() {
   print_info "Installing Xcode Command Line Tools (This might take a few minutes)"
 
-  if type xcode-select >&- && xpath=$( xcode-select --print-path ) && test -d "${xpath}" && test -x "${xpath}" ; then
+  if xpath=$( xcode-select --print-path 2>/dev/null ) && test -d "${xpath}" && test -x "${xpath}" ; then
       print_success "Oh! Seems like the Xcode tools were already installed ¯\_(ツ)_/¯\n"
   else
       touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;

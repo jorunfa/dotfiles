@@ -20,16 +20,7 @@ create_symlink() {
     print_info "Creating symlink to the Ghostty config"
 
     absolute_source_path="$( cd "$( dirname "$CONFIG_SOURCE" )" && pwd )/config.ghostty"
-    mkdir -p "$( dirname "$CONFIG_DESTINATION" )"
-
-    if [ -e "$CONFIG_DESTINATION" ]; then
-        print_info "Existing config detected! Moving it to ~/dotfiles_old"
-        mkdir -p ~/dotfiles_old
-        mv -f "$CONFIG_DESTINATION" ~/dotfiles_old/ghostty_config
-    fi
-
-    ln -s "$absolute_source_path" "$CONFIG_DESTINATION"
-    print_result $? "$(tildify "$CONFIG_DESTINATION") → $(tildify "$absolute_source_path")"
+    link_file "$absolute_source_path" "$CONFIG_DESTINATION"
     printf "\n"
 }
 

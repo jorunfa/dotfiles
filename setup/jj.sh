@@ -13,7 +13,7 @@ create_symlinks() {
 
 # If personal/jj doesn't set a name and email, reuse the ones git.sh set up
 copy_name_and_email_from_git() {
-    if jj config get user.name > /dev/null 2>&1 && jj config get user.email > /dev/null 2>&1; then
+    if [ -n "$(jj config get user.name 2>/dev/null)" ] && [ -n "$(jj config get user.email 2>/dev/null)" ]; then
         return
     fi
 

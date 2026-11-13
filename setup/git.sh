@@ -20,6 +20,11 @@ ask_for_name_and_email() {
     print_question "Enter your email: "
     read -r git_email </dev/tty
 
+    if [ -z "$git_name" ] || [ -z "$git_email" ]; then
+        print_error "Name and email can't be empty. Run setup/git.sh again to set them"
+        return 1
+    fi
+
     git config --file "$LOCAL_GITCONFIG" user.name "$git_name" &&
         git config --file "$LOCAL_GITCONFIG" user.email "$git_email"
     print_result $? "Set git name and email in $(tildify $LOCAL_GITCONFIG)"
