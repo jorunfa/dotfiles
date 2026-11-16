@@ -1,8 +1,6 @@
 # dotfiles
 macOS setup for a terminal-centric developer: [fish](https://fishshell.com/), [Ghostty](https://ghostty.org/), [starship](https://starship.rs/), [mise](https://mise.jdx.dev/), git and [jj](https://jj-vcs.github.io/jj/), plus about 100 macOS tweaks.
 
-Originally forked from [mortenvn/dotfiles](https://github.com/mortenvn/dotfiles) (credz to him).
-
 ![dotfiles-demo](https://cloud.githubusercontent.com/assets/3471625/26286320/9818992c-3e62-11e7-9f4f-00e5ebb3ba0e.gif)
 
 
@@ -54,7 +52,7 @@ Lots of things! The following things will happen in chronological order:
   * Copy your git name and email to `~/.config/jj/conf.d/local.toml` if the personal config doesn't set them
 * **[?] Ghostty**
   * Install [Ghostty](https://ghostty.org/)
-  * Symlink the [Ghostty config](dotfiles/ghostty/config.ghostty)
+  * Symlink the [Ghostty config](dotfiles/ghostty/config.ghostty) (Snazzy theme in dark mode, Catppuccin Latte in light mode)
 * **lsd**
   * Symlink the [lsd config](dotfiles/lsd) (a prettier `ls`)
 * **[?] Install global NPM packages** (skipped if `NPM_PACKAGES` is empty)
@@ -84,21 +82,3 @@ A few things in the config assume specific tools, and are skipped if they're mis
 * **`EDITOR`** is set to [code-wait](dotfiles/bin/code-wait), which needs VS Code's `code` command on your PATH
 * The `cai` aliases in git and jj write commit messages with [auggie](https://docs.augmentcode.com/cli/overview)
 
-
-# Better terminal colors
-![Snazzy theme by Sindre Sorhus](https://github.com/sindresorhus/terminal-snazzy/raw/master/screenshot.png)
-
-
-### Ghostty
-You don't have to do anything. Just run `install.sh` or `setup/ghostty.sh`.
-
-
-### Terminal
-1. Open the file `other/snazzy.terminal`
-2. Open **Settings** ➔ **Profiles**
-3. Select **Snazzy** and click **Default**
-
-
-### iTerm
-1. Open the file `other/snazzy.itermcolors`
-2. Select **Snazzy** from **Settings** ➔ **Profiles** ➔ **Colors** ➔ **Color Presets**
