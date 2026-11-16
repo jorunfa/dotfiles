@@ -16,4 +16,9 @@ create_symlinks() {
 print_heading "Augment"
 print_in_gray "Rules and skills that shape how the Augment agent behaves\n\n"
 
-create_symlinks
+print_info "These are personal preferences. Take a look at dotfiles/augment/ before saying yes"
+if ask_question "Do you want to install the Augment rules and skills?"; then
+    create_symlinks
+else
+    print_error "Skipping Augment rules and skills"
+fi

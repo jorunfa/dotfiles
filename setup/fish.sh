@@ -9,6 +9,9 @@ create_symlinks() {
     print_info "Creating symlinks to the dotfiles"
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/config/" ~/.config/fish/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/functions/" ~/.config/fish/functions/ false
+    ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/conf.d/" ~/.config/fish/conf.d/ false
+    ${SCRIPT_DIR}/symlink_dotfiles.sh "../personal/fish/" ~/.config/fish/conf.d/ false
+    ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/fish/completions/" ~/.config/fish/completions/ false
     ${SCRIPT_DIR}/symlink_dotfiles.sh "../dotfiles/universal/"
 
     # ~/bin is added to PATH in config.fish
@@ -23,27 +26,16 @@ add_fish_as_allowed_shell() {
 }
 
 install_fisherman() {
-    print_info "Installing fisherman (package manager)"
-    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-    print_result $? "Install fisherman\n"
+    print_info "Installing fisher (package manager)"
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
+    print_result $? "Install fisher\n"
 }
 
 install_fisherman_packages() {
-    print_info "Installing fisherman packages:"
+    print_info "Installing fisher packages:"
     print_list $FISHERMAN_PACKAGES
     /opt/homebrew/bin/fish -c "fisher install $FISHERMAN_PACKAGES"
-    print_result $? "Install fisherman packages\n"
-}
-
-install_re_search() {
-    print_info "Installing re-search (backwards search using CTRL+R or arrow keys)"
-    gh repo clone jbonjean/re-search ~/projects/ || cd ~/projects/re-search/
-
-    make -C .
-    chmod +x ./re-search
-    ln -s ./re-search /usr/local/bin/re-search
-
-    print_result $? "Install re-search\n"
+    print_result $? "Install fisher packages\n"
 }
 
 set_fish_as_default_shell() {
@@ -64,5 +56,4 @@ create_symlinks
 add_fish_as_allowed_shell
 install_fisherman
 install_fisherman_packages
-install_re_search
 set_fish_as_default_shell

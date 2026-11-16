@@ -5,9 +5,9 @@
 # https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos      #
 ###############################################################################
 
-# Close any open System Preferences panes, to prevent them from overriding
+# Close any open System Settings panes, to prevent them from overriding
 # settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit'
 
 # Ask for the administrator password upfront
 sudo -v

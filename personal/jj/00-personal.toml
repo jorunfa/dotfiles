@@ -1,0 +1,6 @@
+# Symlinked to ~/.config/jj/conf.d/00-personal.toml.
+# If you forked this repo: replace this with your own settings (or empty it)
+
+[user]
+name = "Jørund B. Fagerjord"
+email = "j.b.fagerjord@gmail.com"
