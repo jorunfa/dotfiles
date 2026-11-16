@@ -12,7 +12,7 @@ BREW_CASKS="google-chrome keybase rectangle visual-studio-code alfred sublime-te
 # NPM_PACKAGES="n ncu"
 
 # BREW (OPTIONAL)
-OPTIONAL_BREW_PACKAGES="wget gpg curl rsync ack awscli git lolcat nyancat"
+OPTIONAL_BREW_PACKAGES="wget gpg curl rsync ack awscli git fx lolcat nyancat"
 # OPTIONAL_BREW_PACKAGES="python3 wget gpg curl ncdu rsync ack yarn awscli git lolcat nyancat streamlink ruby"
 
 # --------------------------------------------------------------
