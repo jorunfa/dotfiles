@@ -32,4 +32,6 @@ rm -f "$prompt"
 [ -z "$msg" ] && echo 'auggie returned no message' >&2 && exit 1
 jj commit -m "$msg" $edit "${paths[@]}"
 ''', ""]
+# cai, tug and push in one go. Takes the same arguments as cai
+ship = ["util", "exec", "--", "bash", "-c", 'jj cai "$@" && jj tug && jj push', ""]
 
